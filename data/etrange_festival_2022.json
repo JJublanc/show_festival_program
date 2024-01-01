@@ -1,0 +1,1850 @@
+[
+  {
+    "id": 0,
+    "Title": "Soir\u00e9e d'ouverture: The roundup",
+    "Duration": 119,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/2326bd8b96eacdd2c5caebb7b96d35ff45a0f0b6.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "06/09 - 19h00 - Salle 500 - 119 min",
+        "start_datetime": "2023-09-06 19:00:00",
+        "end_datetime": "2023-09-06 20:59:00",
+        "start": "2023-09-06T19:00:00",
+        "end": "2023-09-06T20:59:00"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "Title": "Batch '81",
+    "Duration": 100,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/fee7e945b4e54a33096d4a6e31160de69bc1ea36.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "06/09 - 19h15 - Salle 300 - 100 min",
+        "start_datetime": "2023-09-06 19:15:00",
+        "end_datetime": "2023-09-06 20:55:00",
+        "start": "2023-09-06T19:15:00",
+        "end": "2023-09-06T20:55:00"
+      },
+      {
+        "id": 1,
+        "description": "09/09 - 19h45 - Salle 100 - 100 min",
+        "start_datetime": "2023-09-09 19:45:00",
+        "end_datetime": "2023-09-09 21:25:00",
+        "start": "2023-09-09T19:45:00",
+        "end": "2023-09-09T21:25:00"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "Title": "Courts 1 - Animal, on est mal!",
+    "Duration": 87,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/3bbbfdb3337737ebf78f33750c7ecf1039d1067b.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "06/09 - 19h45 - Salle 100 - 87 min",
+        "start_datetime": "2023-09-06 19:45:00",
+        "end_datetime": "2023-09-06 21:12:00",
+        "start": "2023-09-06T19:45:00",
+        "end": "2023-09-06T21:12:00"
+      },
+      {
+        "id": 1,
+        "description": "09/09 - 15h45 - Salle 100 - 87 min",
+        "start_datetime": "2023-09-09 15:45:00",
+        "end_datetime": "2023-09-09 17:12:00",
+        "start": "2023-09-09T15:45:00",
+        "end": "2023-09-09T17:12:00"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "Title": "Gonza, le lancier",
+    "Duration": 126,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/39c9002f1d04d4c7d807d217d89a8e4186c91edb.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "06/09 - 21h30 - Salle 300 - 126 min",
+        "start_datetime": "2023-09-06 21:30:00",
+        "end_datetime": "2023-09-06 23:36:00",
+        "start": "2023-09-06T21:30:00",
+        "end": "2023-09-06T23:36:00"
+      },
+      {
+        "id": 1,
+        "description": "07/09 - 15h00 - Salle 500 - 126 min",
+        "start_datetime": "2023-09-07 15:00:00",
+        "end_datetime": "2023-09-07 17:06:00",
+        "start": "2023-09-07T15:00:00",
+        "end": "2023-09-07T17:06:00"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "Title": "Assault",
+    "Duration": 90,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/b3e7f91ea18f9a0f01f54cc31bce6ecd6b4cc012.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "06/09 - 21h45 - Salle 100 - 90 min",
+        "start_datetime": "2023-09-06 21:45:00",
+        "end_datetime": "2023-09-06 23:15:00",
+        "start": "2023-09-06T21:45:00",
+        "end": "2023-09-06T23:15:00"
+      },
+      {
+        "id": 1,
+        "description": "15/09 - 14h15 - Salle 300 - 90 min",
+        "start_datetime": "2023-09-15 14:15:00",
+        "end_datetime": "2023-09-15 15:45:00",
+        "start": "2023-09-15T14:15:00",
+        "end": "2023-09-15T15:45:00"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "Title": "Life for sale",
+    "Duration": 106,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/26429f29235fa650a3bf987db8b1ffea94948256.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "06/09 - 22h00 - Salle 500 - 106 min",
+        "start_datetime": "2023-09-06 22:00:00",
+        "end_datetime": "2023-09-06 23:46:00",
+        "start": "2023-09-06T22:00:00",
+        "end": "2023-09-06T23:46:00"
+      },
+      {
+        "id": 1,
+        "description": "16/09 - 22h00 - Salle 500 - 106 min",
+        "start_datetime": "2023-09-16 22:00:00",
+        "end_datetime": "2023-09-16 23:46:00",
+        "start": "2023-09-16T22:00:00",
+        "end": "2023-09-16T23:46:00"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "Title": "Itim, les rites de mai",
+    "Duration": 116,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/6c4a2dc748cc4d0681a07d4b6df033fd73421b26.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "07/09 - 14h15 - Salle 300 - 116 min",
+        "start_datetime": "2023-09-07 14:15:00",
+        "end_datetime": "2023-09-07 16:11:00",
+        "start": "2023-09-07T14:15:00",
+        "end": "2023-09-07T16:11:00"
+      },
+      {
+        "id": 1,
+        "description": "18/09 - 20h45 - Salle 100 - 116 min",
+        "start_datetime": "2023-09-18 20:45:00",
+        "end_datetime": "2023-09-18 22:41:00",
+        "start": "2023-09-18T20:45:00",
+        "end": "2023-09-18T22:41:00"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "Title": "Courts 6 - Trop bizarre !",
+    "Duration": 97,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/2bdbbe26aff2835617a2c23bd9ae9c80a0cc9417.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "07/09 - 14h45 - Salle 100 - 97 min",
+        "start_datetime": "2023-09-07 14:45:00",
+        "end_datetime": "2023-09-07 16:22:00",
+        "start": "2023-09-07T14:45:00",
+        "end": "2023-09-07T16:22:00"
+      },
+      {
+        "id": 1,
+        "description": "13/09 - 16h00 - Salle 100 - 97 min",
+        "start_datetime": "2023-09-13 16:00:00",
+        "end_datetime": "2023-09-13 17:37:00",
+        "start": "2023-09-13T16:00:00",
+        "end": "2023-09-13T17:37:00"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "Title": "Under the blossoming cherry trees",
+    "Duration": 95,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/51b05e7aed8595865bdbd332adec744e0d5e7be8.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "07/09 - 16h45 - Salle 300 - 95 min",
+        "start_datetime": "2023-09-07 16:45:00",
+        "end_datetime": "2023-09-07 18:20:00",
+        "start": "2023-09-07T16:45:00",
+        "end": "2023-09-07T18:20:00"
+      },
+      {
+        "id": 1,
+        "description": "13/09 - 15h30 - Salle 300 - 95 min",
+        "start_datetime": "2023-09-13 15:30:00",
+        "end_datetime": "2023-09-13 17:05:00",
+        "start": "2023-09-13T15:30:00",
+        "end": "2023-09-13T17:05:00"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "Title": "Pr\u00e9sident Faust",
+    "Duration": 111,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/fe84d2448363e7ebe8b28bb800a5f65e4a2cf788.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "07/09 - 17h00 - Salle 100 - 111 min",
+        "start_datetime": "2023-09-07 17:00:00",
+        "end_datetime": "2023-09-07 18:51:00",
+        "start": "2023-09-07T17:00:00",
+        "end": "2023-09-07T18:51:00"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "Title": "L\u2019\u00c9trange histoire du coupeur de bois",
+    "Duration": 99,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/2efb1bb9fbeea4212a8d8a64fa339407d456bc85.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "07/09 - 18h00 - Salle 500 - 99 min",
+        "start_datetime": "2023-09-07 18:00:00",
+        "end_datetime": "2023-09-07 19:39:00",
+        "start": "2023-09-07T18:00:00",
+        "end": "2023-09-07T19:39:00"
+      },
+      {
+        "id": 1,
+        "description": "10/09 - 21h45 - Salle 100 - 99 min",
+        "start_datetime": "2023-09-10 21:45:00",
+        "end_datetime": "2023-09-10 23:24:00",
+        "start": "2023-09-10T21:45:00",
+        "end": "2023-09-10T23:24:00"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "Title": "Couleur chair",
+    "Duration": 116,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/d9820de393bdc983b5e2e7159efbe3e34f0811f6.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "07/09 - 19h00 - Salle 300 - 116 min",
+        "start_datetime": "2023-09-07 19:00:00",
+        "end_datetime": "2023-09-07 20:56:00",
+        "start": "2023-09-07T19:00:00",
+        "end": "2023-09-07T20:56:00"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "Title": "Courts 3 - Analogies num\u00e9riques",
+    "Duration": 179,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/cb5d78fba69bfd6817749102ed91cca4b1b6108a.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "07/09 - 19h30 - Salle 100 - 179 min",
+        "start_datetime": "2023-09-07 19:30:00",
+        "end_datetime": "2023-09-07 22:29:00",
+        "start": "2023-09-07T19:30:00",
+        "end": "2023-09-07T22:29:00"
+      },
+      {
+        "id": 1,
+        "description": "12/09 - 20h00 - Salle 100 - 179 min",
+        "start_datetime": "2023-09-12 20:00:00",
+        "end_datetime": "2023-09-12 22:59:00",
+        "start": "2023-09-12T20:00:00",
+        "end": "2023-09-12T22:59:00"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "Title": "La femme de Tcha\u00efkovski",
+    "Duration": 143,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/0c4f13ad96f2091fccca72386a4bc40b04154abd.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "07/09 - 20h30 - Salle 500 - 143 min",
+        "start_datetime": "2023-09-07 20:30:00",
+        "end_datetime": "2023-09-07 22:53:00",
+        "start": "2023-09-07T20:30:00",
+        "end": "2023-09-07T22:53:00"
+      },
+      {
+        "id": 1,
+        "description": "10/09 - 14h45 - Salle 500 - 143 min",
+        "start_datetime": "2023-09-10 14:45:00",
+        "end_datetime": "2023-09-10 17:08:00",
+        "start": "2023-09-10T14:45:00",
+        "end": "2023-09-10T17:08:00"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "Title": "Seobok + La d\u00e9cong\u00e9lation de Monsieur Moro",
+    "Duration": 128,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/a9e246d01394162a4c0f2dcc8503b33c6a918727.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "07/09 - 21h30 - Salle 300 - 128 min",
+        "start_datetime": "2023-09-07 21:30:00",
+        "end_datetime": "2023-09-07 23:38:00",
+        "start": "2023-09-07T21:30:00",
+        "end": "2023-09-07T23:38:00"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "Title": "L'\u00e9tang du d\u00e9mon",
+    "Duration": 123,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/5d7f7842ea7342ab8aa50bb11ae28a8d9a786aff.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "07/09 - 21h45 - Salle 100 - 123 min",
+        "start_datetime": "2023-09-07 21:45:00",
+        "end_datetime": "2023-09-07 23:48:00",
+        "start": "2023-09-07T21:45:00",
+        "end": "2023-09-07T23:48:00"
+      },
+      {
+        "id": 1,
+        "description": "14/09 - 14h00 - Salle 300 - 123 min",
+        "start_datetime": "2023-09-14 14:00:00",
+        "end_datetime": "2023-09-14 16:03:00",
+        "start": "2023-09-14T14:00:00",
+        "end": "2023-09-14T16:03:00"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "Title": "Vaudou (entre vivants et morts, le sang)",
+    "Duration": 100,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/e09873a0e71412593af73f2fcbf9133b59f6c744.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "08/09 - 15h00 - Salle 100 - 100 min",
+        "start_datetime": "2023-09-08 15:00:00",
+        "end_datetime": "2023-09-08 16:40:00",
+        "start": "2023-09-08T15:00:00",
+        "end": "2023-09-08T16:40:00"
+      },
+      {
+        "id": 1,
+        "description": "11/09 - 17h30 - Salle 100 - 100 min",
+        "start_datetime": "2023-09-11 17:30:00",
+        "end_datetime": "2023-09-11 19:10:00",
+        "start": "2023-09-11T17:30:00",
+        "end": "2023-09-11T19:10:00"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "Title": "Himiko",
+    "Duration": 100,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/7f6e5485fb13a3c9fbab34c38a5dc7403844492f.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "08/09 - 15h15 - Salle 300 - 100 min",
+        "start_datetime": "2023-09-08 15:15:00",
+        "end_datetime": "2023-09-08 16:55:00",
+        "start": "2023-09-08T15:15:00",
+        "end": "2023-09-08T16:55:00"
+      },
+      {
+        "id": 1,
+        "description": "09/09 - 17h00 - Salle 300 - 100 min",
+        "start_datetime": "2023-09-09 17:00:00",
+        "end_datetime": "2023-09-09 18:40:00",
+        "start": "2023-09-09T17:00:00",
+        "end": "2023-09-09T18:40:00"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "Title": "Kisapmata",
+    "Duration": 98,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/131f8073bcf0aab77bbd42ab6532aa287fd35eb2.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "08/09 - 16h15 - Salle 500 - 98 min",
+        "start_datetime": "2023-09-08 16:15:00",
+        "end_datetime": "2023-09-08 17:53:00",
+        "start": "2023-09-08T16:15:00",
+        "end": "2023-09-08T17:53:00"
+      },
+      {
+        "id": 1,
+        "description": "13/09 - 17h45 - Salle 300 - 98 min",
+        "start_datetime": "2023-09-13 17:45:00",
+        "end_datetime": "2023-09-13 19:23:00",
+        "start": "2023-09-13T17:45:00",
+        "end": "2023-09-13T19:23:00"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "Title": "Courts 2 - Hymne des ch\u00e9rubins",
+    "Duration": 90,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/97cc2061811c7b2c6747896439a23723a6e8ed99.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "08/09 - 17h15 - Salle 100 - 90 min",
+        "start_datetime": "2023-09-08 17:15:00",
+        "end_datetime": "2023-09-08 18:45:00",
+        "start": "2023-09-08T17:15:00",
+        "end": "2023-09-08T18:45:00"
+      },
+      {
+        "id": 1,
+        "description": "15/09 - 14h45 - Salle 100 - 90 min",
+        "start_datetime": "2023-09-15 14:45:00",
+        "end_datetime": "2023-09-15 16:15:00",
+        "start": "2023-09-15T14:45:00",
+        "end": "2023-09-15T16:15:00"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "Title": "Ne dis rien + L'ultime mariage",
+    "Duration": 113,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/c3085f7eef9887274ffdc9ec59e930f5713fbf77.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "08/09 - 17h30 - Salle 300 - 113 min",
+        "start_datetime": "2023-09-08 17:30:00",
+        "end_datetime": "2023-09-08 19:23:00",
+        "start": "2023-09-08T17:30:00",
+        "end": "2023-09-08T19:23:00"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "Title": "We might as well be dead",
+    "Duration": 96,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/7eae8e641adf119b109461f05c2ec87d0525857c.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "08/09 - 18h30 - Salle 500 - 96 min",
+        "start_datetime": "2023-09-08 18:30:00",
+        "end_datetime": "2023-09-08 20:06:00",
+        "start": "2023-09-08T18:30:00",
+        "end": "2023-09-08T20:06:00"
+      },
+      {
+        "id": 1,
+        "description": "11/09 - 17h15 - Salle 500 - 96 min",
+        "start_datetime": "2023-09-11 17:15:00",
+        "end_datetime": "2023-09-11 18:51:00",
+        "start": "2023-09-11T17:15:00",
+        "end": "2023-09-11T18:51:00"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "Title": "Pierre Pinoncelli, l'artiste \u00e0 la phalange coup\u00e9e",
+    "Duration": 85,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/cbf8bbb4c16f32c7311d5fc6958b971f968a5572.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "08/09 - 19h30 - Salle 100 - 85 min",
+        "start_datetime": "2023-09-08 19:30:00",
+        "end_datetime": "2023-09-08 20:55:00",
+        "start": "2023-09-08T19:30:00",
+        "end": "2023-09-08T20:55:00"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "Title": "Happening",
+    "Duration": 99,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/3dd10a225747d5be7cf9c884189ab3a63f360a44.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "08/09 - 20h00 - Salle 300 - 99 min",
+        "start_datetime": "2023-09-08 20:00:00",
+        "end_datetime": "2023-09-08 21:39:00",
+        "start": "2023-09-08T20:00:00",
+        "end": "2023-09-08T21:39:00"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "Title": "Spiritwalker",
+    "Duration": 108,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/4a1277ec2c6530c1820f74bf37a6c706c966404b.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "08/09 - 21h00 - Salle 500 - 108 min",
+        "start_datetime": "2023-09-08 21:00:00",
+        "end_datetime": "2023-09-08 22:48:00",
+        "start": "2023-09-08T21:00:00",
+        "end": "2023-09-08T22:48:00"
+      },
+      {
+        "id": 1,
+        "description": "09/09 - 15h15 - Salle 500 - 108 min",
+        "start_datetime": "2023-09-09 15:15:00",
+        "end_datetime": "2023-09-09 17:03:00",
+        "start": "2023-09-09T15:15:00",
+        "end": "2023-09-09T17:03:00"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "Title": "Courts 4 - Dans la maison...",
+    "Duration": 93,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/63320a2acc82cd8e175e9d75d67a9425c0169ead.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "08/09 - 21h30 - Salle 100 - 93 min",
+        "start_datetime": "2023-09-08 21:30:00",
+        "end_datetime": "2023-09-08 23:03:00",
+        "start": "2023-09-08T21:30:00",
+        "end": "2023-09-08T23:03:00"
+      },
+      {
+        "id": 1,
+        "description": "10/09 - 19h30 - Salle 100 - 93 min",
+        "start_datetime": "2023-09-10 19:30:00",
+        "end_datetime": "2023-09-10 21:03:00",
+        "start": "2023-09-10T19:30:00",
+        "end": "2023-09-10T21:03:00"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "Title": "La guerre des espions",
+    "Duration": 99,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/8e2a017345228129dfe6164d757d2a94b26884ff.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "08/09 - 22h00 - Salle 300 - 99 min",
+        "start_datetime": "2023-09-08 22:00:00",
+        "end_datetime": "2023-09-08 23:39:00",
+        "start": "2023-09-08T22:00:00",
+        "end": "2023-09-08T23:39:00"
+      },
+      {
+        "id": 1,
+        "description": "11/09 - 21h30 - Salle 300 - 99 min",
+        "start_datetime": "2023-09-11 21:30:00",
+        "end_datetime": "2023-09-11 23:09:00",
+        "start": "2023-09-11T21:30:00",
+        "end": "2023-09-11T23:09:00"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "Title": "Double suicide \u00e0 Amijima",
+    "Duration": 105,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/63387efb236283d42e4c2c39d300c2480f28178f.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "09/09 - 14h00 - Salle 300 - 105 min",
+        "start_datetime": "2023-09-09 14:00:00",
+        "end_datetime": "2023-09-09 15:45:00",
+        "start": "2023-09-09T14:00:00",
+        "end": "2023-09-09T15:45:00"
+      },
+      {
+        "id": 1,
+        "description": "16/09 - 14h30 - Salle 300 - 105 min",
+        "start_datetime": "2023-09-16 14:30:00",
+        "end_datetime": "2023-09-16 16:15:00",
+        "start": "2023-09-16T14:30:00",
+        "end": "2023-09-16T16:15:00"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "Title": "FilmFarsi",
+    "Duration": 84,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/f2f45e7c022fecc64791b84b77f17b130647c55b.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "09/09 - 17h45 - Salle 100 - 84 min",
+        "start_datetime": "2023-09-09 17:45:00",
+        "end_datetime": "2023-09-09 19:09:00",
+        "start": "2023-09-09T17:45:00",
+        "end": "2023-09-09T19:09:00"
+      },
+      {
+        "id": 1,
+        "description": "18/09 - 18h30 - Salle 100 - 84 min",
+        "start_datetime": "2023-09-18 18:30:00",
+        "end_datetime": "2023-09-18 19:54:00",
+        "start": "2023-09-18T18:30:00",
+        "end": "2023-09-18T19:54:00"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "Title": "Sans filtre",
+    "Duration": 147,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/ec5cff74cace6a0ac70b4ab543462f4784c861cf.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "09/09 - 18h00 - Salle 500 - 147 min",
+        "start_datetime": "2023-09-09 18:00:00",
+        "end_datetime": "2023-09-09 20:27:00",
+        "start": "2023-09-09T18:00:00",
+        "end": "2023-09-09T20:27:00"
+      },
+      {
+        "id": 1,
+        "description": "10/09 - 14h15 - Salle 300 - 147 min",
+        "start_datetime": "2023-09-10 14:15:00",
+        "end_datetime": "2023-09-10 16:42:00",
+        "start": "2023-09-10T14:15:00",
+        "end": "2023-09-10T16:42:00"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "Title": "Soir\u00e9e Punk Neuroatypique",
+    "Duration": 186,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/66657ebd291211b5f10554fae53fbb27ea988683.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "09/09 - 19h30 - Salle 300 - 186 min",
+        "start_datetime": "2023-09-09 19:30:00",
+        "end_datetime": "2023-09-09 22:36:00",
+        "start": "2023-09-09T19:30:00",
+        "end": "2023-09-09T22:36:00"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "Title": "Hot blooded",
+    "Duration": 119,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/a4932bb87a299fe9c9072daffffe77cf9555875f.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "09/09 - 21h30 - Salle 500 - 119 min",
+        "start_datetime": "2023-09-09 21:30:00",
+        "end_datetime": "2023-09-09 23:29:00",
+        "start": "2023-09-09T21:30:00",
+        "end": "2023-09-09T23:29:00"
+      },
+      {
+        "id": 1,
+        "description": "13/09 - 22h00 - Salle 500 - 119 min",
+        "start_datetime": "2023-09-13 22:00:00",
+        "end_datetime": "2023-09-13 23:59:00",
+        "start": "2023-09-13T22:00:00",
+        "end": "2023-09-13T23:59:00"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "Title": "The Midnight Terror",
+    "Duration": 120,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/cd1ce65ef716a25bd9ec9aa818e1a0e5582cac17.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "09/09 - 21h45 - Salle 100 - 120 min",
+        "start_datetime": "2023-09-09 21:45:00",
+        "end_datetime": "2023-09-09 23:45:00",
+        "start": "2023-09-09T21:45:00",
+        "end": "2023-09-09T23:45:00"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "Title": "Le collectionneur de cerveaux",
+    "Duration": 100,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/e92069fae7337ec0a79dfe5d1f2ae272cb338113.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "10/09 - 15h00 - Salle 100 - 100 min",
+        "start_datetime": "2023-09-10 15:00:00",
+        "end_datetime": "2023-09-10 16:40:00",
+        "start": "2023-09-10T15:00:00",
+        "end": "2023-09-10T16:40:00"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "Title": "Diamond 33",
+    "Duration": 120,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/28a101b602a4d6c8542e12ff3dbbbd815e45fd23.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "10/09 - 17h00 - Salle 100 - 120 min",
+        "start_datetime": "2023-09-10 17:00:00",
+        "end_datetime": "2023-09-10 19:00:00",
+        "start": "2023-09-10T17:00:00",
+        "end": "2023-09-10T19:00:00"
+      },
+      {
+        "id": 1,
+        "description": "17/09 - 21h30 - Salle 100 - 120 min",
+        "start_datetime": "2023-09-17 21:30:00",
+        "end_datetime": "2023-09-17 23:30:00",
+        "start": "2023-09-17T21:30:00",
+        "end": "2023-09-17T23:30:00"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "Title": "Rimini",
+    "Duration": 114,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/e08f6d89eef59f200c34536fec73468892351bb2.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "10/09 - 17h15 - Salle 300 - 114 min",
+        "start_datetime": "2023-09-10 17:15:00",
+        "end_datetime": "2023-09-10 19:09:00",
+        "start": "2023-09-10T17:15:00",
+        "end": "2023-09-10T19:09:00"
+      },
+      {
+        "id": 1,
+        "description": "17/09 - 16h45 - Salle 100 - 114 min",
+        "start_datetime": "2023-09-17 16:45:00",
+        "end_datetime": "2023-09-17 18:39:00",
+        "start": "2023-09-17T16:45:00",
+        "end": "2023-09-17T18:39:00"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "Title": "La Fuite du Capitaine Volkonogov",
+    "Duration": 120,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/d88b466f362ed3fa0bddc17abac307e116372db8.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "10/09 - 18h00 - Salle 500 - 120 min",
+        "start_datetime": "2023-09-10 18:00:00",
+        "end_datetime": "2023-09-10 20:00:00",
+        "start": "2023-09-10T18:00:00",
+        "end": "2023-09-10T20:00:00"
+      },
+      {
+        "id": 1,
+        "description": "11/09 - 14h15 - Salle 500 - 120 min",
+        "start_datetime": "2023-09-11 14:15:00",
+        "end_datetime": "2023-09-11 16:15:00",
+        "start": "2023-09-11T14:15:00",
+        "end": "2023-09-11T16:15:00"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "Title": "Zeria",
+    "Duration": 61,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/505ce82b8e39b1b74083ce3c43d8538c3ab2b02d.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "10/09 - 19h45 - Salle 300 - 61 min",
+        "start_datetime": "2023-09-10 19:45:00",
+        "end_datetime": "2023-09-10 20:46:00",
+        "start": "2023-09-10T19:45:00",
+        "end": "2023-09-10T20:46:00"
+      },
+      {
+        "id": 1,
+        "description": "11/09 - 16h00 - Salle 100 - 61 min",
+        "start_datetime": "2023-09-11 16:00:00",
+        "end_datetime": "2023-09-11 17:01:00",
+        "start": "2023-09-11T16:00:00",
+        "end": "2023-09-11T17:01:00"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "Title": "The roundup",
+    "Duration": 106,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/f6a7648a9ad1f327697376881d0638a4f61f9914.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "06/09 - 19h00 - Salle 500 - 106 min",
+        "start_datetime": "2023-09-06 19:00:00",
+        "end_datetime": "2023-09-06 20:46:00",
+        "start": "2023-09-06T19:00:00",
+        "end": "2023-09-06T20:46:00"
+      },
+      {
+        "id": 1,
+        "description": "10/09 - 21h00 - Salle 500 - 106 min",
+        "start_datetime": "2023-09-10 21:00:00",
+        "end_datetime": "2023-09-10 22:46:00",
+        "start": "2023-09-10T21:00:00",
+        "end": "2023-09-10T22:46:00"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "Title": "Tout fout le camp",
+    "Duration": 94,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/161c5e9f4239d6236f6b5ce2a7726d65eecd5ed3.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "10/09 - 21h30 - Salle 300 - 94 min",
+        "start_datetime": "2023-09-10 21:30:00",
+        "end_datetime": "2023-09-10 23:04:00",
+        "start": "2023-09-10T21:30:00",
+        "end": "2023-09-10T23:04:00"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "Title": "Shanks",
+    "Duration": 93,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/b21f97fa8848b52229c13ac76b357495ea2ea06d.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "11/09 - 14h00 - Salle 100 - 93 min",
+        "start_datetime": "2023-09-11 14:00:00",
+        "end_datetime": "2023-09-11 15:33:00",
+        "start": "2023-09-11T14:00:00",
+        "end": "2023-09-11T15:33:00"
+      },
+      {
+        "id": 1,
+        "description": "15/09 - 17h00 - Salle 100 - 93 min",
+        "start_datetime": "2023-09-15 17:00:00",
+        "end_datetime": "2023-09-15 18:33:00",
+        "start": "2023-09-15T17:00:00",
+        "end": "2023-09-15T18:33:00"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "Title": "Mon visage embras\u00e9 au soleil couchant",
+    "Duration": 82,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/d774d74dfaf6eb3f9462df6cadd59445126263ca.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "11/09 - 14h45 - Salle 300 - 82 min",
+        "start_datetime": "2023-09-11 14:45:00",
+        "end_datetime": "2023-09-11 16:07:00",
+        "start": "2023-09-11T14:45:00",
+        "end": "2023-09-11T16:07:00"
+      },
+      {
+        "id": 1,
+        "description": "12/09 - 17h45 - Salle 300 - 82 min",
+        "start_datetime": "2023-09-12 17:45:00",
+        "end_datetime": "2023-09-12 19:07:00",
+        "start": "2023-09-12T17:45:00",
+        "end": "2023-09-12T19:07:00"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "Title": "Dual + Apologie des z\u00e8bres albinos",
+    "Duration": 113,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/73697bc2ef930fb860957c30eea34719512780ff.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "11/09 - 16h45 - Salle 300 - 113 min",
+        "start_datetime": "2023-09-11 16:45:00",
+        "end_datetime": "2023-09-11 18:38:00",
+        "start": "2023-09-11T16:45:00",
+        "end": "2023-09-11T18:38:00"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "Title": "Assassinat",
+    "Duration": 104,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/b28e0a82a0056e681a7661f7ad13246754903607.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "11/09 - 19h15 - Salle 300 - 104 min",
+        "start_datetime": "2023-09-11 19:15:00",
+        "end_datetime": "2023-09-11 20:59:00",
+        "start": "2023-09-11T19:15:00",
+        "end": "2023-09-11T20:59:00"
+      },
+      {
+        "id": 1,
+        "description": "12/09 - 15h30 - Salle 300 - 104 min",
+        "start_datetime": "2023-09-12 15:30:00",
+        "end_datetime": "2023-09-12 17:14:00",
+        "start": "2023-09-12T15:30:00",
+        "end": "2023-09-12T17:14:00"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "Title": "Steven Arnold: Heavenly Bodies",
+    "Duration": 80,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/23dab258a60432198d28ecad6332312741fbe6ed.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "11/09 - 19h30 - Salle 100 - 80 min",
+        "start_datetime": "2023-09-11 19:30:00",
+        "end_datetime": "2023-09-11 20:50:00",
+        "start": "2023-09-11T19:30:00",
+        "end": "2023-09-11T20:50:00"
+      },
+      {
+        "id": 1,
+        "description": "12/09 - 22h15 - Salle 100 - 80 min",
+        "start_datetime": "2023-09-12 22:15:00",
+        "end_datetime": "2023-09-12 23:35:00",
+        "start": "2023-09-12T22:15:00",
+        "end": "2023-09-12T23:35:00"
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "Title": "La Piedad",
+    "Duration": 80,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/ba809464e860dda6437e01131567f1b118750b56.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "11/09 - 19h45 - Salle 500 - 80 min",
+        "start_datetime": "2023-09-11 19:45:00",
+        "end_datetime": "2023-09-11 21:05:00",
+        "start": "2023-09-11T19:45:00",
+        "end": "2023-09-11T21:05:00"
+      },
+      {
+        "id": 1,
+        "description": "13/09 - 19h45 - Salle 300 - 80 min",
+        "start_datetime": "2023-09-13 19:45:00",
+        "end_datetime": "2023-09-13 21:05:00",
+        "start": "2023-09-13T19:45:00",
+        "end": "2023-09-13T21:05:00"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "Title": "Luminous Procuress",
+    "Duration": 123,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/7d7cee10bb6fc201f00d3b7d77fa30e2d5fabc9b.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "11/09 - 21h15 - Salle 100 - 123 min",
+        "start_datetime": "2023-09-11 21:15:00",
+        "end_datetime": "2023-09-11 23:18:00",
+        "start": "2023-09-11T21:15:00",
+        "end": "2023-09-11T23:18:00"
+      },
+      {
+        "id": 1,
+        "description": "15/09 - 21h15 - Salle 100 - 123 min",
+        "start_datetime": "2023-09-15 21:15:00",
+        "end_datetime": "2023-09-15 23:18:00",
+        "start": "2023-09-15T21:15:00",
+        "end": "2023-09-15T23:18:00"
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "Title": "Immunit\u00e9 collective",
+    "Duration": 94,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/cbc8073b83599b20357e75ee34f392fb3500f8b9.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "11/09 - 22h00 - Salle 500 - 94 min",
+        "start_datetime": "2023-09-11 22:00:00",
+        "end_datetime": "2023-09-11 23:34:00",
+        "start": "2023-09-11T22:00:00",
+        "end": "2023-09-11T23:34:00"
+      },
+      {
+        "id": 1,
+        "description": "13/09 - 14h15 - Salle 500 - 94 min",
+        "start_datetime": "2023-09-13 14:15:00",
+        "end_datetime": "2023-09-13 15:49:00",
+        "start": "2023-09-13T14:15:00",
+        "end": "2023-09-13T15:49:00"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "Title": "L'enfant de la haute mer + Le voyageur du silence + Le puits et le pendule",
+    "Duration": 94,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/6d817f34d15103ab73000dfa2edbe10026ad2669.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "12/09 - 14h00 - Salle 100 - 94 min",
+        "start_datetime": "2023-09-12 14:00:00",
+        "end_datetime": "2023-09-12 15:34:00",
+        "start": "2023-09-12T14:00:00",
+        "end": "2023-09-12T15:34:00"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "Title": "Fleur p\u00e2le",
+    "Duration": 96,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/98c0260390853cf985b776d848c728af1b15cffa.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "12/09 - 14h15 - Salle 500 - 96 min",
+        "start_datetime": "2023-09-12 14:15:00",
+        "end_datetime": "2023-09-12 15:51:00",
+        "start": "2023-09-12T14:15:00",
+        "end": "2023-09-12T15:51:00"
+      },
+      {
+        "id": 1,
+        "description": "18/09 - 18h00 - Salle 500 - 96 min",
+        "start_datetime": "2023-09-18 18:00:00",
+        "end_datetime": "2023-09-18 19:36:00",
+        "start": "2023-09-18T18:00:00",
+        "end": "2023-09-18T19:36:00"
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "Title": "Le cocher",
+    "Duration": 120,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/881d5547c6b289a68b1d8b711f44431709916762.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "12/09 - 16h00 - Salle 100 - 120 min",
+        "start_datetime": "2023-09-12 16:00:00",
+        "end_datetime": "2023-09-12 18:00:00",
+        "start": "2023-09-12T16:00:00",
+        "end": "2023-09-12T18:00:00"
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "Title": "Inu-Oh",
+    "Duration": 98,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/5f6131775ad17541d967e5e6fdf1e0434c07fb46.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "12/09 - 16h45 - Salle 500 - 98 min",
+        "start_datetime": "2023-09-12 16:45:00",
+        "end_datetime": "2023-09-12 18:23:00",
+        "start": "2023-09-12T16:45:00",
+        "end": "2023-09-12T18:23:00"
+      },
+      {
+        "id": 1,
+        "description": "14/09 - 16h15 - Salle 500 - 98 min",
+        "start_datetime": "2023-09-14 16:15:00",
+        "end_datetime": "2023-09-14 17:53:00",
+        "start": "2023-09-14T16:15:00",
+        "end": "2023-09-14T17:53:00"
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "Title": "Un chien andalou + In the shadow of the sun",
+    "Duration": 67,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/e0d4d7ecbbd5073381c2695d5471ae2964267920.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "12/09 - 18h15 - Salle 100 - 67 min",
+        "start_datetime": "2023-09-12 18:15:00",
+        "end_datetime": "2023-09-12 19:22:00",
+        "start": "2023-09-12T18:15:00",
+        "end": "2023-09-12T19:22:00"
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "Title": "Sick of myself",
+    "Duration": 95,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/27082e7880240287369a44fc5912622097e9f0cd.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "12/09 - 19h15 - Salle 500 - 95 min",
+        "start_datetime": "2023-09-12 19:15:00",
+        "end_datetime": "2023-09-12 20:50:00",
+        "start": "2023-09-12T19:15:00",
+        "end": "2023-09-12T20:50:00"
+      },
+      {
+        "id": 1,
+        "description": "13/09 - 16h45 - Salle 500 - 95 min",
+        "start_datetime": "2023-09-13 16:45:00",
+        "end_datetime": "2023-09-13 18:20:00",
+        "start": "2023-09-13T16:45:00",
+        "end": "2023-09-13T18:20:00"
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "Title": "Paris-Secret",
+    "Duration": 89,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/37d0e6fa15c46aa6e0598702027d93610db7ffd3.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "12/09 - 19h45 - Salle 300 - 89 min",
+        "start_datetime": "2023-09-12 19:45:00",
+        "end_datetime": "2023-09-12 21:14:00",
+        "start": "2023-09-12T19:45:00",
+        "end": "2023-09-12T21:14:00"
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "Title": "L'origine du mal",
+    "Duration": 122,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/28045322db6d41a4adefc1863e8fe9f61dfaef84.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "12/09 - 21h30 - Salle 500 - 122 min",
+        "start_datetime": "2023-09-12 21:30:00",
+        "end_datetime": "2023-09-12 23:32:00",
+        "start": "2023-09-12T21:30:00",
+        "end": "2023-09-12T23:32:00"
+      },
+      {
+        "id": 1,
+        "description": "13/09 - 19h00 - Salle 500 - 122 min",
+        "start_datetime": "2023-09-13 19:00:00",
+        "end_datetime": "2023-09-13 21:02:00",
+        "start": "2023-09-13T19:00:00",
+        "end": "2023-09-13T21:02:00"
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "Title": "L'Empire des sens",
+    "Duration": 111,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/ec1779c0d6915d1e94fce955387fafd2f66bf91b.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "12/09 - 21h45 - Salle 300 - 111 min",
+        "start_datetime": "2023-09-12 21:45:00",
+        "end_datetime": "2023-09-12 23:36:00",
+        "start": "2023-09-12T21:45:00",
+        "end": "2023-09-12T23:36:00"
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "Title": "\u00c7a peut vous arriver demain",
+    "Duration": 91,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/25bc4c45918fd7a0c8ea3a34b7da4c9601a4ff24.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "13/09 - 14h00 - Salle 100 - 91 min",
+        "start_datetime": "2023-09-13 14:00:00",
+        "end_datetime": "2023-09-13 15:31:00",
+        "start": "2023-09-13T14:00:00",
+        "end": "2023-09-13T15:31:00"
+      },
+      {
+        "id": 1,
+        "description": "18/09 - 14h45 - Salle 300 - 91 min",
+        "start_datetime": "2023-09-18 14:45:00",
+        "end_datetime": "2023-09-18 16:16:00",
+        "start": "2023-09-18T14:45:00",
+        "end": "2023-09-18T16:16:00"
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "Title": "Duffer",
+    "Duration": 75,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/142a9b7eb6c382fb8a27350f73839461b0dd64d2.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "13/09 - 18h15 - Salle 100 - 75 min",
+        "start_datetime": "2023-09-13 18:15:00",
+        "end_datetime": "2023-09-13 19:30:00",
+        "start": "2023-09-13T18:15:00",
+        "end": "2023-09-13T19:30:00"
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "Title": "Who killed Nancy?",
+    "Duration": 52,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/cc5a3a07970508184bdd1a1641f0a03edc5bd0a1.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "13/09 - 20h00 - Salle 100 - 52 min",
+        "start_datetime": "2023-09-13 20:00:00",
+        "end_datetime": "2023-09-13 20:52:00",
+        "start": "2023-09-13T20:00:00",
+        "end": "2023-09-13T20:52:00"
+      },
+      {
+        "id": 1,
+        "description": "14/09 - 20h00 - Salle 100 - 52 min",
+        "start_datetime": "2023-09-14 20:00:00",
+        "end_datetime": "2023-09-14 20:52:00",
+        "start": "2023-09-14T20:00:00",
+        "end": "2023-09-14T20:52:00"
+      },
+      {
+        "id": 2,
+        "description": "17/09 - 14h00 - Salle 500 - 52 min",
+        "start_datetime": "2023-09-17 14:00:00",
+        "end_datetime": "2023-09-17 14:52:00",
+        "start": "2023-09-17T14:00:00",
+        "end": "2023-09-17T14:52:00"
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "Title": "Une soir\u00e9e en enfer",
+    "Duration": 120,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/ba336964902b3a258548c6f202bbf3168630ff46.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "13/09 - 21h30 - Salle 100 - 120 min",
+        "start_datetime": "2023-09-13 21:30:00",
+        "end_datetime": "2023-09-13 23:30:00",
+        "start": "2023-09-13T21:30:00",
+        "end": "2023-09-13T23:30:00"
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "Title": "La vall\u00e9e des plaisirs",
+    "Duration": 109,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/c2acb3143cc25f07d34be38495cee807e7ce821a.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "13/09 - 21h45 - Salle 300 - 109 min",
+        "start_datetime": "2023-09-13 21:45:00",
+        "end_datetime": "2023-09-13 23:34:00",
+        "start": "2023-09-13T21:45:00",
+        "end": "2023-09-13T23:34:00"
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "Title": "Courts 5 - Parmi nous...",
+    "Duration": 103,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/477f4875513feda61fb6501f2e89e02f73fd6928.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "14/09 - 14h15 - Salle 100 - 103 min",
+        "start_datetime": "2023-09-14 14:15:00",
+        "end_datetime": "2023-09-14 15:58:00",
+        "start": "2023-09-14T14:15:00",
+        "end": "2023-09-14T15:58:00"
+      },
+      {
+        "id": 1,
+        "description": "16/09 - 14h15 - Salle 100 - 103 min",
+        "start_datetime": "2023-09-16 14:15:00",
+        "end_datetime": "2023-09-16 15:58:00",
+        "start": "2023-09-16T14:15:00",
+        "end": "2023-09-16T15:58:00"
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "Title": "Perrault 70",
+    "Duration": 57,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/21bff7d1220fc9df4013db509e3ee4959b57f2f9.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "14/09 - 16h30 - Salle 100 - 57 min",
+        "start_datetime": "2023-09-14 16:30:00",
+        "end_datetime": "2023-09-14 17:27:00",
+        "start": "2023-09-14T16:30:00",
+        "end": "2023-09-14T17:27:00"
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "Title": "Orine, la proscrite",
+    "Duration": 109,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/20e9751aa9f5d6c906176de3617b0f96fb2eece0.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "14/09 - 16h45 - Salle 300 - 109 min",
+        "start_datetime": "2023-09-14 16:45:00",
+        "end_datetime": "2023-09-14 18:34:00",
+        "start": "2023-09-14T16:45:00",
+        "end": "2023-09-14T18:34:00"
+      },
+      {
+        "id": 1,
+        "description": "18/09 - 21h30 - Salle 300 - 109 min",
+        "start_datetime": "2023-09-18 21:30:00",
+        "end_datetime": "2023-09-18 23:19:00",
+        "start": "2023-09-18T21:30:00",
+        "end": "2023-09-18T23:19:00"
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "Title": "Family Dinner",
+    "Duration": 97,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/8dea383197255bc892bcb3301b7a8af8c94ccb7e.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "14/09 - 18h00 - Salle 100 - 97 min",
+        "start_datetime": "2023-09-14 18:00:00",
+        "end_datetime": "2023-09-14 19:37:00",
+        "start": "2023-09-14T18:00:00",
+        "end": "2023-09-14T19:37:00"
+      },
+      {
+        "id": 1,
+        "description": "15/09 - 22h00 - Salle 500 - 97 min",
+        "start_datetime": "2023-09-15 22:00:00",
+        "end_datetime": "2023-09-15 23:37:00",
+        "start": "2023-09-15T22:00:00",
+        "end": "2023-09-15T23:37:00"
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "Title": "Les rascals",
+    "Duration": 102,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/fee8dcac645b87e29998077c9ffbc7423d1a8d0f.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "14/09 - 19h00 - Salle 500 - 102 min",
+        "start_datetime": "2023-09-14 19:00:00",
+        "end_datetime": "2023-09-14 20:42:00",
+        "start": "2023-09-14T19:00:00",
+        "end": "2023-09-14T20:42:00"
+      },
+      {
+        "id": 1,
+        "description": "17/09 - 17h15 - Salle 300 - 102 min",
+        "start_datetime": "2023-09-17 17:15:00",
+        "end_datetime": "2023-09-17 18:57:00",
+        "start": "2023-09-17T17:15:00",
+        "end": "2023-09-17T18:57:00"
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "Title": "Food + L'esprit de la ruche",
+    "Duration": 115,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/0d5e96d8bfaebcbf31a16e0df742998f8da1ff5c.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "14/09 - 19h15 - Salle 300 - 115 min",
+        "start_datetime": "2023-09-14 19:15:00",
+        "end_datetime": "2023-09-14 21:10:00",
+        "start": "2023-09-14T19:15:00",
+        "end": "2023-09-14T21:10:00"
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "Title": "Objectif V\u00e9rit\u00e9",
+    "Duration": 111,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/c37fdbc17968d9708e3554a451b06f1728838720.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "14/09 - 21h15 - Salle 100 - 111 min",
+        "start_datetime": "2023-09-14 21:15:00",
+        "end_datetime": "2023-09-14 23:06:00",
+        "start": "2023-09-14T21:15:00",
+        "end": "2023-09-14T23:06:00"
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "Title": "Hunt",
+    "Duration": 131,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/97e736bb71156bc5f82d5d7d1457263606104f7b.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "14/09 - 21h30 - Salle 500 - 131 min",
+        "start_datetime": "2023-09-14 21:30:00",
+        "end_datetime": "2023-09-14 23:41:00",
+        "start": "2023-09-14T21:30:00",
+        "end": "2023-09-14T23:41:00"
+      },
+      {
+        "id": 1,
+        "description": "17/09 - 15h45 - Salle 500 - 131 min",
+        "start_datetime": "2023-09-17 15:45:00",
+        "end_datetime": "2023-09-17 17:56:00",
+        "start": "2023-09-17T15:45:00",
+        "end": "2023-09-17T17:56:00"
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "Title": "Ma\u00eetresse",
+    "Duration": 112,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/2763909da9e0b146f0642222c6c02b815121eb9d.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "14/09 - 21h45 - Salle 300 - 112 min",
+        "start_datetime": "2023-09-14 21:45:00",
+        "end_datetime": "2023-09-14 23:37:00",
+        "start": "2023-09-14T21:45:00",
+        "end": "2023-09-14T23:37:00"
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "Title": "Silence",
+    "Duration": 129,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/739266a52bbfe3377d8bbc518eee40532c116ac6.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "15/09 - 15h45 - Salle 500 - 129 min",
+        "start_datetime": "2023-09-15 15:45:00",
+        "end_datetime": "2023-09-15 17:54:00",
+        "start": "2023-09-15T15:45:00",
+        "end": "2023-09-15T17:54:00"
+      },
+      {
+        "id": 1,
+        "description": "16/09 - 14h00 - Salle 500 - 129 min",
+        "start_datetime": "2023-09-16 14:00:00",
+        "end_datetime": "2023-09-16 16:09:00",
+        "start": "2023-09-16T14:00:00",
+        "end": "2023-09-16T16:09:00"
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "Title": "Int\u00e9grale Alberto V\u00e1squez",
+    "Duration": 125,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/ef6a1763f0334abeabfcc9b54c392febc5d9d5ab.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "15/09 - 16h15 - Salle 300 - 125 min",
+        "start_datetime": "2023-09-15 16:15:00",
+        "end_datetime": "2023-09-15 18:20:00",
+        "start": "2023-09-15T16:15:00",
+        "end": "2023-09-15T18:20:00"
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "Title": "Cambio de sexo (Je veux \u00eatre femme)",
+    "Duration": 108,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/d448b2d3e8683521438b808bd06ec7e3a7707785.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "15/09 - 18h45 - Salle 500 - 108 min",
+        "start_datetime": "2023-09-15 18:45:00",
+        "end_datetime": "2023-09-15 20:33:00",
+        "start": "2023-09-15T18:45:00",
+        "end": "2023-09-15T20:33:00"
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "Title": "Courts 7 - C'est dans la terre...",
+    "Duration": 97,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/d27f0cb3ffcbac4fdeb62e65c76d50805216db00.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "15/09 - 19h00 - Salle 100 - 97 min",
+        "start_datetime": "2023-09-15 19:00:00",
+        "end_datetime": "2023-09-15 20:37:00",
+        "start": "2023-09-15T19:00:00",
+        "end": "2023-09-15T20:37:00"
+      },
+      {
+        "id": 1,
+        "description": "17/09 - 19h15 - Salle 100 - 97 min",
+        "start_datetime": "2023-09-17 19:15:00",
+        "end_datetime": "2023-09-17 20:52:00",
+        "start": "2023-09-17T19:15:00",
+        "end": "2023-09-17T20:52:00"
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "Title": "Le ch\u00e2teau de la puret\u00e9",
+    "Duration": 100,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/9fd704c99d48e6aa52a67151125d34592b82c433.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "15/09 - 19h15 - Salle 300 - 100 min",
+        "start_datetime": "2023-09-15 19:15:00",
+        "end_datetime": "2023-09-15 20:55:00",
+        "start": "2023-09-15T19:15:00",
+        "end": "2023-09-15T20:55:00"
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "Title": "Mater Amat\u00edsima",
+    "Duration": 90,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/1a626bce4df986b5db2f19a4b2ce22ee5335ca9d.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "15/09 - 21h45 - Salle 300 - 90 min",
+        "start_datetime": "2023-09-15 21:45:00",
+        "end_datetime": "2023-09-15 23:15:00",
+        "start": "2023-09-15T21:45:00",
+        "end": "2023-09-15T23:15:00"
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "Title": "Bienvenue Mister Chance",
+    "Duration": 130,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/20775cc2e9541d4f40046617edd589e1a0b41c8a.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "16/09 - 16h30 - Salle 100 - 130 min",
+        "start_datetime": "2023-09-16 16:30:00",
+        "end_datetime": "2023-09-16 18:40:00",
+        "start": "2023-09-16T16:30:00",
+        "end": "2023-09-16T18:40:00"
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "Title": "Attachment",
+    "Duration": 105,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/33a8ee090834f117f476553150c74623fe5c0c23.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "16/09 - 17h00 - Salle 500 - 105 min",
+        "start_datetime": "2023-09-16 17:00:00",
+        "end_datetime": "2023-09-16 18:45:00",
+        "start": "2023-09-16T17:00:00",
+        "end": "2023-09-16T18:45:00"
+      },
+      {
+        "id": 1,
+        "description": "17/09 - 21h45 - Salle 300 - 105 min",
+        "start_datetime": "2023-09-17 21:45:00",
+        "end_datetime": "2023-09-17 23:30:00",
+        "start": "2023-09-17T21:45:00",
+        "end": "2023-09-17T23:30:00"
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "Title": "Personne ne parlera de nous quand nous serons mortes",
+    "Duration": 104,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/136875194cab3ebd142f6f1b5535bb4592bfc522.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "16/09 - 17h30 - Salle 300 - 104 min",
+        "start_datetime": "2023-09-16 17:30:00",
+        "end_datetime": "2023-09-16 19:14:00",
+        "start": "2023-09-16T17:30:00",
+        "end": "2023-09-16T19:14:00"
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "Title": "The second civil war + Pi\u00e8ce touch\u00e9e",
+    "Duration": 113,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/117ecc511200336ea430f16f58e722927058f229.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "16/09 - 19h15 - Salle 100 - 113 min",
+        "start_datetime": "2023-09-16 19:15:00",
+        "end_datetime": "2023-09-16 21:08:00",
+        "start": "2023-09-16T19:15:00",
+        "end": "2023-09-16T21:08:00"
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "Title": "Unicorn wars",
+    "Duration": 91,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/9087cb2d1cc6cdedb96f832f01ebe0291eeb38bd.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "16/09 - 19h30 - Salle 500 - 91 min",
+        "start_datetime": "2023-09-16 19:30:00",
+        "end_datetime": "2023-09-16 21:01:00",
+        "start": "2023-09-16T19:30:00",
+        "end": "2023-09-16T21:01:00"
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "Title": "Vous \u00eates au Village",
+    "Duration": 151,
+    "ImageURL": "https://www.etrangefestival.com/images/programs/9c528bef1860c420e3a7c4b9c242b95d6c0d8111.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "16/09 - 20h00 - Salle 300 - 151 min",
+        "start_datetime": "2023-09-16 20:00:00",
+        "end_datetime": "2023-09-16 22:31:00",
+        "start": "2023-09-16T20:00:00",
+        "end": "2023-09-16T22:31:00"
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "Title": "Sans nouvelles de Dieu",
+    "Duration": 115,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/bdb88ea3c8cab25e28d418efc61cbfcc272206b8.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "16/09 - 21h30 - Salle 100 - 115 min",
+        "start_datetime": "2023-09-16 21:30:00",
+        "end_datetime": "2023-09-16 23:25:00",
+        "start": "2023-09-16T21:30:00",
+        "end": "2023-09-16T23:25:00"
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "Title": "Frisson?",
+    "Duration": 106,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/935bf9968773d7bf06dbc0661d5399a007b0d0da.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "17/09 - 14h30 - Salle 100 - 106 min",
+        "start_datetime": "2023-09-17 14:30:00",
+        "end_datetime": "2023-09-17 16:16:00",
+        "start": "2023-09-17T14:30:00",
+        "end": "2023-09-17T16:16:00"
+      },
+      {
+        "id": 1,
+        "description": "18/09 - 16h00 - Salle 100 - 106 min",
+        "start_datetime": "2023-09-18 16:00:00",
+        "end_datetime": "2023-09-18 17:46:00",
+        "start": "2023-09-18T16:00:00",
+        "end": "2023-09-18T17:46:00"
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "Title": "Enqu\u00eate dans l'impossible",
+    "Duration": 100,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/1f5ba582a9bda0094c26413fcfc7f3694ea6b64e.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "17/09 - 14h45 - Salle 300 - 100 min",
+        "start_datetime": "2023-09-17 14:45:00",
+        "end_datetime": "2023-09-17 16:25:00",
+        "start": "2023-09-17T14:45:00",
+        "end": "2023-09-17T16:25:00"
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "Title": "La tour",
+    "Duration": 90,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/70a08f1b05c55b82ac78ba459f709c56052114c0.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "17/09 - 18h45 - Salle 500 - 90 min",
+        "start_datetime": "2023-09-17 18:45:00",
+        "end_datetime": "2023-09-17 20:15:00",
+        "start": "2023-09-17T18:45:00",
+        "end": "2023-09-17T20:15:00"
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "Title": "Les mois d'avril sont meurtiers",
+    "Duration": 88,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/8f7542fbc9a743bce5d72464d8c9029940e2a33d.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "17/09 - 19h45 - Salle 300 - 88 min",
+        "start_datetime": "2023-09-17 19:45:00",
+        "end_datetime": "2023-09-17 21:13:00",
+        "start": "2023-09-17T19:45:00",
+        "end": "2023-09-17T21:13:00"
+      }
+    ]
+  },
+  {
+    "id": 88,
+    "Title": "Project Wolf Hunting",
+    "Duration": 121,
+    "ImageURL": "https://www.etrangefestival.com/images/movies/9c350bfac7c4fdf8ab72bd61d852982fe7cc94dd.jpg",
+    "Seances": [
+      {
+        "id": 0,
+        "description": "17/09 - 21h15 - Salle 500 - 121 min",
+        "start_datetime": "2023-09-17 21:15:00",
+        "end_datetime": "2023-09-17 23:16:00",
+        "start": "2023-09-17T21:15:00",
+        "end": "2023-09-17T23:16:00"
+      },
+      {
+        "id": 1,
+        "description": "18/09 - 15h00 - Salle 500 - 121 min",
+        "start_datetime": "2023-09-18 15:00:00",
+        "end_datetime": "2023-09-18 17:01:00",
+        "start": "2023-09-18T15:00:00",
+        "end": "2023-09-18T17:01:00"
+      }
+    ]
+  }
+]

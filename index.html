@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site Web</title>
+    <!-- Ajoutez le lien vers la feuille de style CSS de votre site -->
+    <link rel="stylesheet" href="style/style.css">
+    <!-- Incluez la bibliothèque FullCalendar et les scripts JavaScript -->
+    <script src='node_modules/fullcalendar/index.global.min.js'></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/ics@3.7.2/dist/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module" src="./scripts/main.js" defer></script>
+</head>
+<body>
+<header>
+    <h1>Mon Site Web</h1>
+    <nav>
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">À propos</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="search-bar">
+        <select>
+            <option value="festival1">Festival 1</option>
+            <option value="festival2">Festival 2</option>
+            <!-- Ajoutez d'autres festivals ici -->
+        </select>
+        <button>Rechercher</button>
+    </div>
+</header>
+<main>
+    <section class="main_panel">
+        <div class="column" id="calendar">
+            <button id="download_program_button">Download My Program</button>
+        </div>
+
+        <div class=column id="filters">
+            <h2>Recherche de films ou pièces</h2>
+            <input type="text" placeholder="Entrez votre recherche...">
+        </div>
+    </section>
+    <section>
+        <!-- Slider main container -->
+        <div #swiperRef="" class="swiper mySwiper">
+            <div class="swiper-wrapper">
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2023 Mon Site Web</p>
+</footer>
+</body>
+</html>
