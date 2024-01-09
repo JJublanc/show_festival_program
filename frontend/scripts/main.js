@@ -1,6 +1,7 @@
 var calendarEl = document.getElementById('calendar');
 var calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth'
+    initialView: 'dayGridMonth',
+
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -62,16 +63,48 @@ function add_event_listener(checkbox, event) {
             console.log(event)
             // If the checkbox is checked, add the event to the calendar
             calendar.addEvent(event);
+            adjustEventColors(calendar);
         } else {
             // If the checkbox is unchecked, remove the event from the calendar
             const existingEvent = calendar.getEventById(event.id);
             if (existingEvent) {
                 existingEvent.remove();
+                adjustEventColors(calendar);
             }
         }
     });
 }
 
+function adjustEventColors(calendar) {
+    var events = calendar.getEvents();
+
+    // Reset the color of all events to the default
+    events.forEach(function (event) {
+        event.setProp('backgroundColor', ''); // Reset background color
+        event.setProp('borderColor', '');     // Reset border color
+    });
+
+    // Check for overlapping events and set their color to red
+    events.forEach(function (currentEvent, currentIndex) {
+        var currentStart = currentEvent.start;
+        var currentEnd = currentEvent.end;
+
+        events.forEach(function (otherEvent, otherIndex) {
+            if (currentIndex !== otherIndex) {
+                var otherStart = otherEvent.start;
+                var otherEnd = otherEvent.end;
+
+                if (
+                    (currentStart >= otherStart && currentStart < otherEnd) ||
+                    (currentEnd > otherStart && currentEnd <= otherEnd)
+                ) {
+                    currentEvent.setProp('backgroundColor', 'red');
+                    currentEvent.setProp('borderColor', 'red');
+                }
+            }
+        });
+    });
+}
 
 // let download_program_button = document.getElementById('download_program_button')
 // download_program_button.addEventListener('click', download_program)
