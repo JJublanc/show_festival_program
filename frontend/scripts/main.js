@@ -39,7 +39,7 @@ function append_a_slide(show) {
             '<div>' +
             '<input type="checkbox" id=' + event_id + '>' +
             show.sessions[i].date + " " + show.sessions[i].time + " " + show.sessions[i].location
-            '</label>'
+        '</label>'
     }
     swiper_slide.innerHTML = content;
     swiper.appendChild(swiper_slide);
@@ -81,7 +81,7 @@ function def_swiper() {
         slidesPerView: 3,
         centeredSlides: true,
         spaceBetween: 30,
-        observer:true,
+        observer: true,
         pagination: {
             el: ".swiper-pagination",
             type: "fraction",
@@ -91,4 +91,37 @@ function def_swiper() {
             prevEl: ".swiper-button-prev",
         },
     });
+}
+
+// 2. Ajoutez un bouton ou un lien pour déclencher le téléchargement
+const downloadButton = document.getElementById("download_program_button");
+downloadButton.addEventListener("click", () => {
+    console.log(calendar.getEvents())
+    const events = calendar.getEvents();
+    const icsContent = generateICS(events);
+
+    const blob = new Blob([icsContent], {type: "text/calendar"});
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "calendrier.ics";
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+});
+
+function generateICS(events) {
+    let icsContent = "BEGIN:VCALENDAR\r\n";
+    events.forEach((event) => {
+        icsContent += "BEGIN:VEVENT\r\n";
+        icsContent += `SUMMARY:${event.title}\r\n`;
+        icsContent += `DTSTART:${event.start.toISOString().replace(/[-:]/g, "")}\r\n`;
+        icsContent += `DTEND:${event.end.toISOString().replace(/[-:]/g, "")}\r\n`;
+        icsContent += "END:VEVENT\r\n";
+    });
+    icsContent += "END:VCALENDAR\r\n";
+
+    return icsContent;
 }
