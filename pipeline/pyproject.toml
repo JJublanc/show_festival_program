@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "pipeline"
+version = "0.1.0"
+description = ""
+authors = ["jjublanc <johan.jublanc@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.31.0"
+beautifulsoup4 = "^4.12.2"
+pandas = "^2.1.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

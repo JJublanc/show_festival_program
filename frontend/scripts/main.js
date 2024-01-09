@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
 function append_swiper_slides(data) {
     for (let i = 0; i < data.length; i++) {
         append_a_slide(data[i]);
-        console.log('Itération de la boucle :', i);
     }
 }
 
@@ -49,7 +48,8 @@ function append_a_slide(show) {
         let event = {
             id: event_id,
             title: show.title, // Modify this to match your event data
-            date: show.sessions[j].date, // Modify this to match the event start date
+            start: show.sessions[j].start,
+            end: show.sessions[j].end,
         };
         let checkbox = document.getElementById(event_id)
         add_event_listener(checkbox, event)
@@ -59,6 +59,7 @@ function append_a_slide(show) {
 function add_event_listener(checkbox, event) {
     checkbox.addEventListener('change', function () {
         if (this.checked) {
+            console.log(event)
             // If the checkbox is checked, add the event to the calendar
             calendar.addEvent(event);
         } else {
