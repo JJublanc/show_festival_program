@@ -42,15 +42,27 @@ function appendSwiperSlides(data) {
     data.forEach(show => {
         show.sessions.forEach(session => {
             const eventId = `${show._id}_${session._id}`;
-            const event = {
+            let event = {
                 id: eventId,
                 title: show.title,
                 start: session.start,
                 end: session.end,
+                checked: false,
             };
+            let stored_event = localStorage.getItem(eventId);
+            if (!stored_event) {
+                localStorage.setItem(eventId, JSON.stringify(event));
+            } else {
+                event = JSON.parse(stored_event);
+                if (event.checked) {
+                    calendar.addEvent(event);
+                }
+            }
             const checkbox = document.getElementById(eventId);
+            checkbox.checked = event.checked;
             addEventListenerToCheckbox(checkbox, event);
         });
+        adjustEventColors(calendar)
     });
 }
 
@@ -59,13 +71,16 @@ function addEventListenerToCheckbox(checkbox, event) {
         if (checkbox.checked) {
             calendar.addEvent(event);
             adjustEventColors(calendar);
+            event.checked = true;
         } else {
             const existingEvent = calendar.getEventById(event.id);
             if (existingEvent) {
                 existingEvent.remove();
                 adjustEventColors(calendar);
+                event.checked = false;
             }
         }
+        localStorage.setItem(event.id, JSON.stringify(event));
     });
 }
 
@@ -119,7 +134,7 @@ downloadButton.addEventListener("click", () => {
     const events = calendar.getEvents();
     const icsContent = generateICS(events);
 
-    const blob = new Blob([icsContent], { type: "text/calendar" });
+    const blob = new Blob([icsContent], {type: "text/calendar"});
     const url = window.URL.createObjectURL(blob);
 
     const a = document.createElement("a");
