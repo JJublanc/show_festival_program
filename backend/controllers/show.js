@@ -82,7 +82,9 @@ exports.deleteShow = (req, res, next) => {
 };
 
 exports.getAllShows = (req, res, next) => {
-    Show.find().then(
+    const filters = req.query;
+    console.log(filters)
+    Show.find(filters).then(
         (shows) => {
             res.status(200).json(shows);
         }
