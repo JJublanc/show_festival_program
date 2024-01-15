@@ -3,18 +3,58 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
     aspectRatio: 1.5, // Vous pouvez définir les options directement lors de la création de l'objet calendar
 });
+let festivals_items = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    calendar.render();
-    axios.get('http://localhost:3000/api/shows')
+    initializeSwiper();
+    fetchFestivals().then(() => {
+        let festivalName = document.getElementById('festival_selector').value;
+        fetchShows(festivalName);
+        console.log(festivals_items);
+        let initial_date = festivals_items.filter(item => item.name === festivalName).map(item => item.start)[0];
+        calendar.gotoDate(initial_date);
+        calendar.render();
+        console.log("Hello")
+    });
+});
+
+
+function fetchFestivals() {
+    return axios.get('http://localhost:3000/api/festivals')
+        .then(response => {
+            festivals_items = response.data;
+            console.log(festivals_items);
+            appendFestivalList(response.data);
+        })
+        .catch(error => {
+            console.error('Erreur lors de la requête:', error);
+        });
+}
+
+function appendFestivalList(data) {
+    const select = document.getElementById('festival_selector');
+    const lisHTML = data.map(festival => {
+        return `
+            <option value=` + festival.name + `>` + festival.name + `</option>`
+            ;
+    }).join('');
+    select.innerHTML = lisHTML;
+    select.addEventListener('change', () => {
+        fetchShows(select.value);
+        let initial_date = festivals_items.filter(item => item.name === select.value).map(item => item.start)[0];
+        calendar.gotoDate(initial_date);
+    });
+}
+
+function fetchShows(festivalName) {
+    return axios.get('http://localhost:3000/api/shows?festival=' + festivalName)
         .then(response => {
             appendSwiperSlides(response.data);
         })
         .catch(error => {
             console.error('Erreur lors de la requête:', error);
         });
-    initializeSwiper();
-});
+}
 
 function appendSwiperSlides(data) {
     const swiperWrapper = document.querySelector('.swiper-wrapper');
@@ -27,7 +67,6 @@ function appendSwiperSlides(data) {
                 </div>
             </label>
         `).join('');
-
         return `
             <div class="swiper-slide">
                 <img src="${show.imageURL}">
