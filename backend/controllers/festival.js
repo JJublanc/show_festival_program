@@ -1,15 +1,12 @@
-const Show = require('../models/show');
+const Festival = require('../models/festival');
 
-exports.createOneShow = (req, res, next) => {
-    const show = new Show({
-        festival: req.body.festival,
-        title: req.body.title,
-        description: req.body.description,
-        duration: req.body.duration,
-        imageURL: req.body.imageURL,
-        sessions: req.body.sessions
+exports.createOneFestival = (req, res, next) => {
+    const festival = new Festival({
+        name: req.body.name,
+        start: req.body.start,
+        end: req.body.end,
     });
-    show.save().then(
+    festival.save().then(
         () => {
             res.status(201).json({
                 message: 'Post saved successfully!'
@@ -24,8 +21,8 @@ exports.createOneShow = (req, res, next) => {
     );
 };
 
-exports.getOneShow = (req, res, next) => {
-    Show.findOne({
+exports.getOneFestival = (req, res, next) => {
+    Festival.findOne({
         _id: req.params.id
     }).then(
         (thing) => {
@@ -40,17 +37,14 @@ exports.getOneShow = (req, res, next) => {
     );
 };
 
-exports.modifyShow = (req, res, next) => {
-    const show = new Show({
+exports.modifyFestival = (req, res, next) => {
+    const festival = new Festival({
         _id: req.params.id,
-        festival: req.body.festival,
-        title: req.body.title,
-        description: req.body.description,
-        duration: req.body.duration,
-        imageURL: req.body.imageURL,
-        seances: req.body.seances
+        name: req.body.name,
+        start: req.body.start,
+        end: req.body.end,
     });
-    Show.updateOne({_id: req.params.id}, show).then(
+    Festival.updateOne({_id: req.params.id}, festival).then(
         () => {
             res.status(201).json({
                 message: 'Thing updated successfully!'
@@ -63,10 +57,10 @@ exports.modifyShow = (req, res, next) => {
             });
         }
     );
-};
+}
 
-exports.deleteShow = (req, res, next) => {
-    Show.deleteOne({_id: req.params.id}).then(
+exports.deleteFestival = (req, res, next) => {
+    Festival.deleteOne({_id: req.params.id}).then(
         () => {
             res.status(200).json({
                 message: 'Deleted!'
@@ -81,12 +75,10 @@ exports.deleteShow = (req, res, next) => {
     );
 };
 
-exports.getAllShows = (req, res, next) => {
-    const filters = req.query;
-    console.log(filters)
-    Show.find(filters).then(
-        (shows) => {
-            res.status(200).json(shows);
+exports.getAllFestivals = (req, res, next) => {
+    Festival.find().then(
+        (festivals) => {
+            res.status(200).json(festivals);
         }
     ).catch(
         (error) => {
