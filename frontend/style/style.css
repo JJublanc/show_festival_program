@@ -58,12 +58,23 @@ section {
     flex: 1 !important; /* Allow both columns to grow and take available space */
     max-height: 50vh; /* Limit the height of each column to 20% of the viewport height */
     box-sizing: border-box; /* Include padding and border in element's total width and height */
+    width: 100%;
 }
 
 .column calendar {
     flex : 1; /* Expand and fill the remaining space */
     max-width: 80vh;
     max-height: 100vh;
+}
+
+#show_description
+{
+    flex: 1; /* Allow the buttons to grow and take available space */
+    padding: 20px; /* Add some spacing for better appearance */
+    /* Add other styles for the buttons column as needed */
+    max-height: 40vh; /* Remplacez [HauteurSouhaitée] par la hauteur maximale souhaitée */
+    overflow: auto; /* Cela ajoutera une barre de défilement si le contenu déborde */
+
 }
 
 #filters {

@@ -1,7 +1,7 @@
 const calendarEl = document.getElementById('calendar');
 const calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
-    aspectRatio: 1.5, // Vous pouvez définir les options directement lors de la création de l'objet calendar
+    aspectRatio: 1.5,
 });
 let festivals_items = [];
 
@@ -46,8 +46,13 @@ function appendFestivalList(data) {
     });
 }
 
-function fetchShows(festivalName) {
-    return axios.get('http://localhost:3000/api/shows?festival=' + festivalName)
+function fetchShows(festivalName, searchTerm) {
+    let url = 'http://localhost:3000/api/shows?festival=' + festivalName;
+    if (searchTerm && searchTerm.trim() !== '') {
+        url += '&term=' + encodeURIComponent(searchTerm);
+    }
+
+    return axios.get(url)
         .then(response => {
             appendSwiperSlides(response.data);
         })
@@ -68,7 +73,7 @@ function appendSwiperSlides(data) {
             </label>
         `).join('');
         return `
-            <div class="swiper-slide">
+            <div class="swiper-slide" id=`+ show._id +`>
                 <img src="${show.imageURL}">
                 <h3>${show.title}</h3>
                 ${sessionHTML}
@@ -151,7 +156,7 @@ function adjustEventColors(calendar) {
     });
 }
 
-function initializeSwiper() {
+async function initializeSwiper() {
     const swiper = new Swiper('.mySwiper', {
         slidesPerView: 3,
         centeredSlides: true,
@@ -164,8 +169,33 @@ function initializeSwiper() {
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
-        },
+        }
     });
+    swiper.on('slideChange', async function () {
+        // This will be triggered every time the slide changes
+        const activeIndex = this.realIndex;
+        const activeSlideElement = this.slides[activeIndex];
+        const show_id = activeSlideElement.id;
+        const div = document.getElementById("show_description");
+
+        // Then we display the content
+        try {
+            const description = await get_show_description(show_id);
+            div.innerHTML = description;
+        } catch (error) {
+            console.error('Erreur lors de la requête:', error);
+        }
+    });
+}
+
+function get_show_description(show_id) {
+    return axios.get('http://localhost:3000/api/shows/' + show_id)
+        .then(response => {
+            return response.data.description;
+        })
+        .catch(error => {
+            console.error('Erreur lors de la requête:', error);
+        });
 }
 
 const downloadButton = document.getElementById("download_program_button");
@@ -183,6 +213,12 @@ downloadButton.addEventListener("click", () => {
     a.click();
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
+});
+
+document.getElementById('searchInput').addEventListener('input', function() {
+    const searchTerm = this.value;
+    let festivalName = document.getElementById('festival_selector').value;
+    fetchShows(festivalName, searchTerm);
 });
 
 function generateICS(events) {
