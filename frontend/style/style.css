@@ -89,6 +89,8 @@ section {
     flex-direction: column;
     align-items: center; /* Center-align content vertically */
     text-align: center; /* Center-align text horizontally */
+    max-height: 90%;
+    overflow-y: auto;
 }
 
 /* Style for the image within the slide */
@@ -132,7 +134,7 @@ footer {
     align-items: center;
     cursor: pointer;
     transform: scale(1);
-    /* Add other styling as needed */
+    overflow-y: auto;
 }
 
 html,

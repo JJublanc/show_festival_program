@@ -1,24 +1,32 @@
 const Festival = require('../models/festival');
 
 exports.createOneFestival = (req, res, next) => {
-    const festival = new Festival({
-        name: req.body.name,
-        start: req.body.start,
-        end: req.body.end,
-    });
-    festival.save().then(
-        () => {
-            res.status(201).json({
-                message: 'Post saved successfully!'
+         // Cherche d'abord si un festival avec le même nom existe déjà
+    Festival.findOne({ name: req.body.name })
+        .then((existingFestival) => {
+            if (existingFestival) {
+                // Si un festival avec le même nom existe, renvoie une erreur
+                 throw new Error('This show already exists');
+            }
+            // Si non, crée un nouveau festival
+            const festival = new Festival({
+                name: req.body.name,
+                start: req.body.start,
+                end: req.body.end,
             });
-        }
-    ).catch(
-        (error) => {
+            // Enregistre le nouveau festival dans la base de données
+            return festival.save();
+        })
+        .then(() => {
+            res.status(201).json({
+                message: 'Festival saved successfully!'
+            });
+        })
+        .catch((error) => {
             res.status(400).json({
                 error: error
             });
-        }
-    );
+        });
 };
 
 exports.getOneFestival = (req, res, next) => {

@@ -73,7 +73,7 @@ function appendSwiperSlides(data) {
             </label>
         `).join('');
         return `
-            <div class="swiper-slide" id=`+ show._id +`>
+            <div class="swiper-slide" id=` + show._id + `>
                 <img src="${show.imageURL}">
                 <h3>${show.title}</h3>
                 ${sessionHTML}
