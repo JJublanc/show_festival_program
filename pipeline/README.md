@@ -16,4 +16,14 @@ poetry add <package_name> --group dev # For development dependencies like
 ```
 
 ## Set you environment variables
+
+## OCR pdf files with festival agenda
+Seems not working perfectly well (some parts are not recognized)
+```
+ocrmypdf --output-type pdfa gerardmer2024_agenda.pdf gerardmer2024_agenda_readable.pdf
+```
+
+Other solution
+```
+https://www.onlineocr.net/fr/
 ```

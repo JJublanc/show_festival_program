@@ -13,12 +13,12 @@ festival_dates = [datetime.strftime(start_date + timedelta(days=i), "%d-%m-%Y")
                   for i in
                   range(festival_duration)]
 default_description = "No description"
-default_image_url = "/animafestival/img/base/logo-n.png"
+default_image_url = "https://animafestival.be/animafestival/img/base/logo-n.png"
 api_url = "http://localhost:3000/api"
 
 def main(year):
 	festival = Festival(name=f"Anima{year}",
-	                    year=year,
+	                    year=2024,
 	                    start=start_date,
 	                    end=start_date + timedelta(days=festival_duration))
 
@@ -54,8 +54,8 @@ def main(year):
 				                     festival.name)
 				festival.shows = (show,)
 
-	load_to_mongo(festival= festival, api_url= api_url)
-	logging.info(festival)
+	load_to_mongo(festival, api_url)
+	return None
 
 
 def get_show_info(show_soup, date, festival):

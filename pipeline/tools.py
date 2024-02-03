@@ -2,6 +2,7 @@ from urllib.parse import urljoin
 import argparse
 import requests
 from data_schema import Festival
+import logging
 
 
 def get_absolute_url(base_url: str, relative_url: str) -> str:
@@ -24,7 +25,7 @@ def get_args() -> argparse.Namespace:
 
 def load_to_mongo(festival: Festival, api_url: str) -> None:
 	# Send the festival data to the API
-	requests.post(get_absolute_url(api_url, "/festivals"),
+	requests.post(get_absolute_url(api_url, "api/festivals"),
 	              json={"name": festival.name,
 	                    "start": str(festival.start),
 	                    "end": str(festival.end),
@@ -43,8 +44,11 @@ def load_to_mongo(festival: Festival, api_url: str) -> None:
 				{"date": str(session.date),
 				 "location": session.location,
 				 "start": str(session.start),
-				 "end": str(session.end)}
+				 "end": str(session.end),
+				 "time": str(session.time)}
 			)
-		requests.post(get_absolute_url(api_url, "/shows")
+		response =requests.post(get_absolute_url(api_url, "api/shows")
 		              , json=show_dict)
+		logging.info(f"Status code: {response.status_code}")
+		logging.info(f"Data sent to the API, message : {response.content}")
 	return None
