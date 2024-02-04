@@ -25,6 +25,6 @@ app.use((req, res, next) => {
 //app.use('/api/auth', userRoutes);
 app.use('/api/shows', showRoutes);
 app.use('/api/festivals', festivalRoutes);
-
+app.use('/api/login', userRoutes);
 
 module.exports = app;
