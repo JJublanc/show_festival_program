@@ -12,10 +12,21 @@ import secrets
 
 dotenv.load_dotenv()
 
+
+class FailedToGetTokenError(Exception):
+	"""Raised when a token could not be acquired from the server."""
+
+	def __init__(self, message, response_text):
+		self.message = message
+		self.response_text = response_text
+		super().__init__(self.message)
+
+
 def generate_random_password():
-    alphabet = string.ascii_letters + string.digits
-    password = ''.join(secrets.choice(alphabet) for i in range(20))
-    return password
+	alphabet = string.ascii_letters + string.digits
+	password = ''.join(secrets.choice(alphabet) for _ in range(20))
+	return password
+
 
 def get_absolute_url(base_url: str, relative_url: str) -> str:
 	# Combine the base URL with the relative URL to get the absolute URL
@@ -61,8 +72,8 @@ def load_to_mongo(festival: Festival, api_url: str) -> None:
 			)
 		response = requests.post(get_absolute_url(api_url,
 		                                          "api/shows"),
-		                        headers=get_headers(),
-		                        json=show_dict)
+		                         headers=get_headers(),
+		                         json=show_dict)
 		logging.info(f"Status code: {response.status_code}")
 		logging.info(f"Data sent to the API, message : {response.content}")
 	return None
@@ -90,15 +101,18 @@ def get_token():
 		return response.json()['token']
 	# If the request was not successful, raise an exception
 	else:
-		raise Exception(f"Failed to get token: {response.text}")
+		raise FailedToGetTokenError(f"Failed to get token: {response.text}")
+
 
 def get_headers():
 	token = get_token()
 	# Define the headers for the GET request
 	return {
-    "Authorization": f"Bearer {token}",
-    "Content-Type": "application/json"
-}
+		"Authorization": f"Bearer {token}",
+		"Content-Type": "application/json"
+	}
+
+
 def check_token(entered_password, stored_hashed_password):
 	# Define the headers for the GET request
 	if bcrypt.checkpw(entered_password.encode('utf-8'),
@@ -106,6 +120,7 @@ def check_token(entered_password, stored_hashed_password):
 		print("Le mot de passe est correct")
 	else:
 		print("Le mot de passe est incorrect")
+
 
 if __name__ == "__main__":
 	token = get_token()

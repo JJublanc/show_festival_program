@@ -26,4 +26,4 @@ class Festival(BaseModel):
 	year: int
 	start: datetime
 	end: datetime
-	shows: Tuple[Show]=None
+	shows: Optional[Tuple[Show]]=None
