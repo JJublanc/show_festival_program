@@ -1,6 +1,6 @@
 import requests
 from datetime import datetime, timedelta
-from tools import get_absolute_url, get_args, load_to_mongo
+from tools import get_absolute_url, get_args, load_to_mongo, get_headers
 from bs4 import BeautifulSoup
 from data_schema import Show, Session, Festival
 import logging

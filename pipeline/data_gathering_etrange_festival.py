@@ -69,7 +69,6 @@ def get_args() -> argparse.Namespace:
 	)
 	return parser.parse_args()
 
-
 def get_absolute_url(base_url: str, relative_url: str) -> str:
 	# Combine the base URL with the relative URL to get the absolute URL
 	return urljoin(base_url, relative_url)
