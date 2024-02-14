@@ -1,10 +1,26 @@
-const calendarEl = document.getElementById('calendar');
-const calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
-    aspectRatio: 1.5,
-});
-let festivals_items = [];
+import axios from 'axios';
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle';
 
+
+
+import { Calendar } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list'
+
+
+const calendarEl = document.getElementById('calendar');
+const calendar = new Calendar(calendarEl, {
+    plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
+    initialView: 'dayGridMonth',
+aspectRatio: 1.5,
+});
+
+let festivals_items = [];
+const backendUrl= "http://localhost:5001/api"
+
+console.log(backendUrl);
 document.addEventListener('DOMContentLoaded', () => {
     initializeSwiper();
     fetchFestivals().then(() => {
@@ -20,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function fetchFestivals() {
-    return axios.get('http://localhost:3000/api/festivals')
+    return axios.get(backendUrl + '/festivals')
         .then(response => {
             festivals_items = response.data;
             console.log(festivals_items);
@@ -47,7 +63,7 @@ function appendFestivalList(data) {
 }
 
 function fetchShows(festivalName, searchTerm) {
-    let url = 'http://localhost:3000/api/shows?festival=' + festivalName;
+    let url = backendUrl + '/shows?festival=' + festivalName;
     if (searchTerm && searchTerm.trim() !== '') {
         url += '&term=' + encodeURIComponent(searchTerm);
     }
