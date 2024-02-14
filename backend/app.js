@@ -9,22 +9,26 @@ app.use(express.json());
 const url = require('url');
 const fixieUrl = url.parse(process.env.FIXIE_SOCKS_HOST);
 const fixieAuth = fixieUrl.auth.split(':');
+const useProxy = process.env.USE_PROXY !== 'False';
+const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+};
 
-console.log(process.env.FIXIE_URL);
-console.log(fixieUrl.hostname);
-console.log(fixieUrl.port);
-console.log(fixieAuth);
-mongoose.connect(process.env.MONGODB_URI,
-    {
-        proxyHost: fixieUrl.hostname,
-        proxyPort: fixieUrl.port,
-        proxyUsername: 'fixie',
-        proxyPassword: fixieAuth[0],
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
+if (useProxy) {
+    console.log('Utilisation d\'un proxy pour se connecter à MongoDB.');
+    options.proxyHost = fixieUrl.hostname;
+    options.proxyPort = fixieUrl.port;
+    options.proxyUsername = 'fixie';
+    options.proxyPassword = fixieAuth[0];
+
+    console.log('Utilisation d\'un proxy pour se connecter à MongoDB.');
+}
+
+// Tentative de connexion
+mongoose.connect(process.env.MONGODB_URI, options)
     .then(() => console.log('Connexion à MongoDB réussie !'))
-    .catch((reason)  => console.log('Connexion à MongoDB échouée !', reason));
+    .catch((reason) => console.log('Connexion à MongoDB échouée !', reason));
 
 
 app.use((req, res, next) => {
