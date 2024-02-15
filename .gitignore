@@ -3,9 +3,15 @@
 blueprint
 node_modules/
 backup/
+
 backend/node_modules/
-frontend/node_modules/
 backend/.env
+
+frontend/node_modules/
 frontend/.env
+frontend/dist/
+
 pipeline/.env
 pipeline/__pycache__/
+
+
