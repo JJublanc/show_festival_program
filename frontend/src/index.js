@@ -2,7 +2,7 @@ import axios from 'axios';
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 
-
+import * as process from "process";
 
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -20,7 +20,7 @@ aspectRatio: 1.5,
 let festivals_items = [];
 const backendUrl= process.env.BACKEND_URL
 
-console.log(backendUrl);
+console.log(backendUrl + "/festivals");
 document.addEventListener('DOMContentLoaded', () => {
     initializeSwiper();
     fetchFestivals().then(() => {
@@ -205,7 +205,7 @@ async function initializeSwiper() {
 }
 
 function get_show_description(show_id) {
-    return axios.get('http://localhost:3000/api/shows/' + show_id)
+    return axios.get(backendUrl + '/shows/' + show_id)
         .then(response => {
             return response.data.description;
         })
