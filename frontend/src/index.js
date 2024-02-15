@@ -18,7 +18,7 @@ aspectRatio: 1.5,
 });
 
 let festivals_items = [];
-const backendUrl= "http://localhost:5001/api"
+const backendUrl= process.env.BACKEND_URL
 
 console.log(backendUrl);
 document.addEventListener('DOMContentLoaded', () => {
