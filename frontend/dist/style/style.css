@@ -3,6 +3,11 @@ body, h1, h2, p, ul, li {
     padding: 0;
 }
 
+p {
+    margin-bottom: 10px;
+    padding: 10px 0;
+}
+
 /* Styles de base */
 body {
     font-family: Arial, sans-serif;
@@ -44,6 +49,10 @@ main {
 
 section {
     margin-bottom: 20px;
+}
+
+.centered {
+    text-align: center;
 }
 
 .main_panel {
