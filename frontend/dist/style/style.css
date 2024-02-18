@@ -4,17 +4,23 @@ h1, h2, p, ul, li {
 }
 
 h1 {
-  padding-left: 10px;
+    padding-left: 10px;
     padding-bottom: 10px;
 }
 
 h2 {
-  padding-left: 10px;
+    padding-left: 10px;
 }
 
 h3 {
-  padding-left: 10px;
+    padding-left: 10px;
     color: #DD2D4A;
+}
+
+h4 {
+    padding-left: 12px;
+    color: #DD2D4A;
+    text-align: center
 }
 
 p {
@@ -48,7 +54,7 @@ button {
 
 
 .search-bar {
-      padding-right: 10px;
+    padding-right: 10px;
     padding-top: 10px;
 }
 
@@ -126,7 +132,7 @@ section {
 }
 
 #calendar.column {
-    width: 50%;  /* ajustez à votre convenance */
+    width: 50%; /* ajustez à votre convenance */
     height: 50vh; /* ajustez à votre convenance */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 15px;
@@ -134,7 +140,7 @@ section {
 
 .container {
     display: flex;
-    justify-content: space-between;  /* Espacement uniforme entre les éléments */
+    justify-content: space-between; /* Espacement uniforme entre les éléments */
 }
 
 .search-container {
@@ -143,7 +149,7 @@ section {
     align-items: center;
 }
 
-#searchInput{
+#searchInput {
     padding: 10px;
     border-radius: 50px;
     width: 100%;
@@ -172,7 +178,7 @@ section {
     text-align: center;
     max-height: 70%;
     overflow-y: auto;
-     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     background-color: #F1EBEC;
     padding: 20px;
