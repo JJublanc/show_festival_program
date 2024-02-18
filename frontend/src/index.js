@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
 function fetchFestivals() {
     return axios.get(backendUrl + '/festivals')
         .then(response => {
@@ -79,6 +78,17 @@ function fetchShows(festivalName, searchTerm) {
         });
 }
 
+window.loadDescription = async function(show_id) {
+    const div = document.getElementById("show_description");
+    try {
+        const show = await get_show_description(show_id); // show should be an object like { title: 'Show Title', description: 'Show Description'}
+        console.log(show);
+        div.innerHTML = `<strong>${show.title}:</strong> ${show.description}`;
+    } catch (error) {
+        console.error('Erreur lors de la requête:', error);
+    }
+}
+
 function appendSwiperSlides(data) {
     const swiperWrapper = document.querySelector('.swiper-wrapper');
     const slidesHTML = data.map(show => {
@@ -91,7 +101,7 @@ function appendSwiperSlides(data) {
             </label>
         `).join('');
         return `
-            <div class="swiper-slide" id=` + show._id + `>
+            <div class="swiper-slide" id=` + show._id + ` onclick="loadDescription('${show._id}')">
                 <img src="${show.imageURL}">
                 <h3>${show.title}</h3>
                 ${sessionHTML}
@@ -100,6 +110,11 @@ function appendSwiperSlides(data) {
     }).join('');
 
     swiperWrapper.innerHTML = slidesHTML;
+
+    data.forEach(show => {
+    const slideElement = document.getElementById(show._id);
+    slideElement.addEventListener('click', () => loadDescription(show._id));
+  });
 
     data.forEach(show => {
         show.sessions.forEach(session => {
@@ -174,15 +189,6 @@ function adjustEventColors(calendar) {
     });
 }
 
-async function loadDescription(show_id) {
-    const div = document.getElementById("show_description");
-    try {
-        div.innerHTML = await get_show_description(show_id);
-    } catch (error) {
-        console.error('Erreur lors de la requête:', error);
-    }
-}
-
 async function initializeSwiper() {
     const swiper = new Swiper('.mySwiper', {
         slidesPerView: 3,
@@ -199,21 +205,13 @@ async function initializeSwiper() {
         },
         preloadImages: false,
         lazy: true,
-        on: {
-            slideChange: function () {
-                const activeIndex = swiper.realIndex;
-                const activeSlideElement = swiper.slides[activeIndex];
-                const show_id = activeSlideElement.id;
-                loadDescription(show_id);
-            }
-        }
     });
 }
 
 function get_show_description(show_id) {
     return axios.get(backendUrl + '/shows/' + show_id)
         .then(response => {
-            return response.data.description;
+            return response.data;
         })
         .catch(error => {
             console.error('Erreur lors de la requête:', error);
