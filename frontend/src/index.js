@@ -4,7 +4,7 @@ import 'swiper/css/bundle';
 
 import * as process from "process";
 
-import { Calendar } from '@fullcalendar/core';
+import {Calendar} from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list'
@@ -12,13 +12,13 @@ import listPlugin from '@fullcalendar/list'
 
 const calendarEl = document.getElementById('calendar');
 const calendar = new Calendar(calendarEl, {
-    plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
+    plugins: [dayGridPlugin, timeGridPlugin, listPlugin],
     initialView: 'dayGridMonth',
-aspectRatio: 1.5,
+    aspectRatio: 1.5,
 });
 
 let festivals_items = [];
-const backendUrl= process.env.BACKEND_URL
+const backendUrl = process.env.BACKEND_URL
 
 console.log(backendUrl + "/festivals");
 document.addEventListener('DOMContentLoaded', () => {
@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let initial_date = festivals_items.filter(item => item.name === festivalName).map(item => item.start)[0];
         calendar.gotoDate(initial_date);
         calendar.render();
-        console.log("Hello")
+
+
     });
 });
 
@@ -39,7 +40,6 @@ function fetchFestivals() {
     return axios.get(backendUrl + '/festivals')
         .then(response => {
             festivals_items = response.data;
-            console.log(festivals_items);
             appendFestivalList(response.data);
         })
         .catch(error => {
@@ -48,8 +48,9 @@ function fetchFestivals() {
 }
 
 function appendFestivalList(data) {
+    const sortedData = data.sort((a, b) => new Date(b.start) - new Date(a.start));
     const select = document.getElementById('festival_selector');
-    const lisHTML = data.map(festival => {
+    const lisHTML = sortedData.map(festival => {
         return `
             <option value=` + festival.name + `>` + festival.name + `</option>`
             ;
@@ -71,6 +72,7 @@ function fetchShows(festivalName, searchTerm) {
     return axios.get(url)
         .then(response => {
             appendSwiperSlides(response.data);
+            loadDescription(response.data[0]._id)
         })
         .catch(error => {
             console.error('Erreur lors de la requête:', error);
@@ -172,6 +174,15 @@ function adjustEventColors(calendar) {
     });
 }
 
+async function loadDescription(show_id) {
+    const div = document.getElementById("show_description");
+    try {
+        div.innerHTML = await get_show_description(show_id);
+    } catch (error) {
+        console.error('Erreur lors de la requête:', error);
+    }
+}
+
 async function initializeSwiper() {
     const swiper = new Swiper('.mySwiper', {
         slidesPerView: 3,
@@ -185,21 +196,16 @@ async function initializeSwiper() {
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
-        }
-    });
-    swiper.on('slideChange', async function () {
-        // This will be triggered every time the slide changes
-        const activeIndex = this.realIndex;
-        const activeSlideElement = this.slides[activeIndex];
-        const show_id = activeSlideElement.id;
-        const div = document.getElementById("show_description");
-
-        // Then we display the content
-        try {
-            const description = await get_show_description(show_id);
-            div.innerHTML = description;
-        } catch (error) {
-            console.error('Erreur lors de la requête:', error);
+        },
+        preloadImages: false,
+        lazy: true,
+        on: {
+            slideChange: function () {
+                const activeIndex = swiper.realIndex;
+                const activeSlideElement = swiper.slides[activeIndex];
+                const show_id = activeSlideElement.id;
+                loadDescription(show_id);
+            }
         }
     });
 }
@@ -231,7 +237,7 @@ downloadButton.addEventListener("click", () => {
     document.body.removeChild(a);
 });
 
-document.getElementById('searchInput').addEventListener('input', function() {
+document.getElementById('searchInput').addEventListener('input', function () {
     const searchTerm = this.value;
     let festivalName = document.getElementById('festival_selector').value;
     fetchShows(festivalName, searchTerm);
