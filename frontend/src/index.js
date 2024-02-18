@@ -191,7 +191,7 @@ function adjustEventColors(calendar) {
 
 async function initializeSwiper() {
     const swiper = new Swiper('.mySwiper', {
-        slidesPerView: 3,
+        slidesPerView: 5,
         centeredSlides: true,
         spaceBetween: 30,
         observer: true,
