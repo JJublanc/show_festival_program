@@ -1,22 +1,84 @@
-body, h1, h2, p, ul, li {
+h1, h2, p, ul, li {
+    margin: 0;
+    color: #DD2D4A;
+}
+
+h1 {
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+h2 {
+    padding-left: 10px;
+}
+
+h3 {
+    padding-left: 10px;
+    color: #DD2D4A;
+}
+
+h4 {
+    padding-left: 12px;
+    color: #DD2D4A;
+    text-align: center
+}
+
+p {
+    margin-bottom: 10px;
+    padding: 10px 0;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+select {
+    padding: 10px 20px; /* Adjust size as needed */
+    border: none;
+    border-radius: 50px; /* Makes the corners round */
+    background-color: #DD2D4A; /* Color of button */
+    color: white; /* Color of text */
+    cursor: pointer;
+}
+
+button {
+    padding: 10px 20px; /* Adjust size as needed */
+    border: none;
+    border-radius: 50px; /* Makes the corners round */
+    background-color: #DD2D4A; /* Color of button */
+    color: white; /* Color of text */
+    cursor: pointer;
+    transition: all 0.3s ease 0s; /* Optional: adds a smooth transition effect when hovering over the button */
+}
+
+
+.search-bar {
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #fff;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-/* Styles de base */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+* {
+    box-sizing: inherit;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
+.header-panel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #A9A9A9;
 }
 
-header h1 {
+header h1, footer h1 {
+    margin: 0;
     font-size: 36px;
 }
 
@@ -35,122 +97,136 @@ nav a {
 }
 
 main {
-    width: 90%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-left: 5%;
+    padding-right: 5%;
+    margin: 0 auto;
+    overflow: auto;
 }
 
 section {
     margin-bottom: 20px;
 }
 
+.centered {
+    text-align: center;
+}
+
 .main_panel {
-    min-height: 50vh;
+    width: 100%;
     display: flex;
-    justify-content: space-between; /* Add space between columns */
-    align-items: flex-start; /* Align items at the top of the container */
-    padding: 20px; /* Add padding for better appearance */
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
 }
 
 .column {
-    flex: 1 !important; /* Allow both columns to grow and take available space */
-    max-height: 50vh; /* Limit the height of each column to 20% of the viewport height */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
-    width: 100%;
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: auto;
 }
 
 .column calendar {
-    flex : 1; /* Expand and fill the remaining space */
-    max-width: 80vh;
-    max-height: 100vh;
+    flex: 1;
+    height: 90vh;
 }
 
-#show_description
-{
-    flex: 1; /* Allow the buttons to grow and take available space */
-    padding: 20px; /* Add some spacing for better appearance */
-    /* Add other styles for the buttons column as needed */
-    max-height: 40vh; /* Remplacez [HauteurSouhaitée] par la hauteur maximale souhaitée */
-    overflow: auto; /* Cela ajoutera une barre de défilement si le contenu déborde */
+#calendar.column {
+    width: 50%; /* ajustez à votre convenance */
+    height: 50vh; /* ajustez à votre convenance */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
 
+.container {
+    display: flex;
+    justify-content: space-between; /* Espacement uniforme entre les éléments */
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#searchInput {
+    padding: 10px;
+    border-radius: 50px;
+    width: 100%;
+    color: #DD2D4A;
+    border-color: #DD2D4A;
+}
+
+#show_description {
+    flex: 1;
+    padding: 20px;
+    max-height: 40vh;
+    overflow: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
 }
 
 #filters {
-    flex: 1; /* Allow the buttons to grow and take available space */
-    padding: 20px; /* Add some spacing for better appearance */
-    /* Add other styles for the buttons column as needed */
+    flex: 1;
+    padding: 20px;
 }
 
-/* Styles for Swiper slides */
 .swiper-slide {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center-align content vertically */
-    text-align: center; /* Center-align text horizontally */
-    max-height: 90%;
+    align-items: center;
+    text-align: center;
+    max-height: 70%;
     overflow-y: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    background-color: #F1EBEC;
+    padding: 20px;
 }
 
-/* Style for the image within the slide */
 .swiper-slide img {
-    max-width: 100%; /* Ensure the image doesn't exceed the slide width */
-    max-height: 60%; /* Ensure the image doesn't exceed the slide height */
+    max-width: 100%;
+    max-height: 60%;
 }
 
-/* Style for the session title */
 .swiper-slide h3 {
     font-size: 18px;
     margin: 10px 0;
-    color: #333; /* Text color */
+    color: #333;
 }
 
-/* Style for the session information */
 .swiper-slide p {
     font-size: 14px;
-    color: #777; /* Text color */
+    color: #777;
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 10px;
     margin-bottom: 10px;
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
+.fc .fc-button-primary {
+    background-color: #DD2D4A !important;
+    border-color: #DD2D4A;
+    color: white;
+}
+
+.fc .fc-button-primary:hover {
+    background-color: #DD2D4A !important;
+    border-color: #DD2D4A;
+    color: white;
 }
 
 .swiper {
     width: 100%;
     height: 300px;
+    --swiper-navigation-color: #880D1E;
 }
+
 
 .checkbox-container {
     display: flex;
     align-items: center;
     cursor: pointer;
-    transform: scale(1);
     overflow-y: auto;
 }
-
-html,
-body {
-    position: relative;
-    height: 100%;
-}
-
-body {
-    background: #eee;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #000;
-    height: 100%;
-    width:100%;
-    margin: 0;
-    padding: 0;
-}
-

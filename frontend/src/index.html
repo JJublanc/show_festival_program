@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
-<!DOCTYPE html>
-<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Site Web</title>
-    <!-- Ajoutez le lien vers la feuille de style CSS de votre site -->
+    <title>Mon programme de festival</title>
     <link rel="stylesheet" href="style/style.css">
-    <!-- Incluez la bibliothèque FullCalendar et les scripts JavaScript -->
     <script type="module" src="./scripts/main.js" defer></script>
 </head>
 <body>
 <header>
-    <h1>Mon Site Web</h1>
-    <nav>
-        <ul>
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">À propos</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="search-bar">
-        <select id="festival_selector">
-            <!-- Ajoutez d'autres festivals ici -->
-        </select>
-        <button>Rechercher</button>
+    <div class="header-panel">
+        <h1>Mon programme de festival
+        </h1>
+        <div class="centered">
+            <p>Choisissez un festival, sélectionnez vos séances, <br>
+                vérifiez leur compatibilité dans le calendrier et
+                téléchargez votre
+                programme au format ICS
+            </p>
+        </div>
+        <div class="search-bar">
+            <select id="festival_selector">
+            </select>
+        </div>
     </div>
 </header>
 <main>
@@ -35,20 +31,18 @@
             <button id="download_program_button">Download My Program</button>
         </div>
         <div class="column">
-            <div class="column" id="filters">
-                <h2>Recherche de films ou pièces</h2>
+            <div class="column container" id="filters">
+                <h3>Recherche de films ou pièces par titre</h3>
                 <div class="search-container">
                     <input type="text" id="searchInput"
-                           placeholder="Entrez votre recherche...">
+                           placeholder="Entrez un titre...">
                 </div>
             </div>
             <div class=column id="show_description">
             </div>
-
         </div>
     </section>
     <section>
-        <!-- Slider main container -->
         <div #swiperRef="" class="swiper mySwiper">
             <div class="swiper-wrapper">
             </div>
@@ -59,7 +53,13 @@
     </section>
 </main>
 <footer>
-    <p>&copy; 2023 Mon Site Web</p>
+    <div class="centered">
+        <a href="https://www.buymeacoffee.com/jjublanc"
+           class="centered">☕ Si
+            Vous pouvez me payer un café ici☕</a>
+    </div>
+    <h4>Contactez-moi par mail : johan.jublanc@gmail.com</h4>
+    <h2>&copy; 2024 Mon programme de festival</h2>
 </footer>
 </body>
 </html>

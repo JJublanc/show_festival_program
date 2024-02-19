@@ -4,7 +4,7 @@ import 'swiper/css/bundle';
 
 import * as process from "process";
 
-import { Calendar } from '@fullcalendar/core';
+import {Calendar} from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list'
@@ -12,13 +12,13 @@ import listPlugin from '@fullcalendar/list'
 
 const calendarEl = document.getElementById('calendar');
 const calendar = new Calendar(calendarEl, {
-    plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
+    plugins: [dayGridPlugin, timeGridPlugin, listPlugin],
     initialView: 'dayGridMonth',
-aspectRatio: 1.5,
+    aspectRatio: 1.5,
 });
 
 let festivals_items = [];
-const backendUrl= process.env.BACKEND_URL
+const backendUrl = process.env.BACKEND_URL
 
 console.log(backendUrl + "/festivals");
 document.addEventListener('DOMContentLoaded', () => {
@@ -30,16 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
         let initial_date = festivals_items.filter(item => item.name === festivalName).map(item => item.start)[0];
         calendar.gotoDate(initial_date);
         calendar.render();
-        console.log("Hello")
+
+
     });
 });
-
 
 function fetchFestivals() {
     return axios.get(backendUrl + '/festivals')
         .then(response => {
             festivals_items = response.data;
-            console.log(festivals_items);
             appendFestivalList(response.data);
         })
         .catch(error => {
@@ -48,8 +47,9 @@ function fetchFestivals() {
 }
 
 function appendFestivalList(data) {
+    const sortedData = data.sort((a, b) => new Date(b.start) - new Date(a.start));
     const select = document.getElementById('festival_selector');
-    const lisHTML = data.map(festival => {
+    const lisHTML = sortedData.map(festival => {
         return `
             <option value=` + festival.name + `>` + festival.name + `</option>`
             ;
@@ -71,10 +71,22 @@ function fetchShows(festivalName, searchTerm) {
     return axios.get(url)
         .then(response => {
             appendSwiperSlides(response.data);
+            loadDescription(response.data[0]._id)
         })
         .catch(error => {
             console.error('Erreur lors de la requête:', error);
         });
+}
+
+window.loadDescription = async function(show_id) {
+    const div = document.getElementById("show_description");
+    try {
+        const show = await get_show_description(show_id); // show should be an object like { title: 'Show Title', description: 'Show Description'}
+        console.log(show);
+        div.innerHTML = `<strong>${show.title}:</strong> ${show.description}`;
+    } catch (error) {
+        console.error('Erreur lors de la requête:', error);
+    }
 }
 
 function appendSwiperSlides(data) {
@@ -89,7 +101,7 @@ function appendSwiperSlides(data) {
             </label>
         `).join('');
         return `
-            <div class="swiper-slide" id=` + show._id + `>
+            <div class="swiper-slide" id=` + show._id + ` onclick="loadDescription('${show._id}')">
                 <img src="${show.imageURL}">
                 <h3>${show.title}</h3>
                 ${sessionHTML}
@@ -98,6 +110,11 @@ function appendSwiperSlides(data) {
     }).join('');
 
     swiperWrapper.innerHTML = slidesHTML;
+
+    data.forEach(show => {
+    const slideElement = document.getElementById(show._id);
+    slideElement.addEventListener('click', () => loadDescription(show._id));
+  });
 
     data.forEach(show => {
         show.sessions.forEach(session => {
@@ -174,7 +191,7 @@ function adjustEventColors(calendar) {
 
 async function initializeSwiper() {
     const swiper = new Swiper('.mySwiper', {
-        slidesPerView: 3,
+        slidesPerView: 5,
         centeredSlides: true,
         spaceBetween: 30,
         observer: true,
@@ -185,29 +202,16 @@ async function initializeSwiper() {
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
-        }
-    });
-    swiper.on('slideChange', async function () {
-        // This will be triggered every time the slide changes
-        const activeIndex = this.realIndex;
-        const activeSlideElement = this.slides[activeIndex];
-        const show_id = activeSlideElement.id;
-        const div = document.getElementById("show_description");
-
-        // Then we display the content
-        try {
-            const description = await get_show_description(show_id);
-            div.innerHTML = description;
-        } catch (error) {
-            console.error('Erreur lors de la requête:', error);
-        }
+        },
+        preloadImages: false,
+        lazy: true,
     });
 }
 
 function get_show_description(show_id) {
     return axios.get(backendUrl + '/shows/' + show_id)
         .then(response => {
-            return response.data.description;
+            return response.data;
         })
         .catch(error => {
             console.error('Erreur lors de la requête:', error);
@@ -231,7 +235,7 @@ downloadButton.addEventListener("click", () => {
     document.body.removeChild(a);
 });
 
-document.getElementById('searchInput').addEventListener('input', function() {
+document.getElementById('searchInput').addEventListener('input', function () {
     const searchTerm = this.value;
     let festivalName = document.getElementById('festival_selector').value;
     fetchShows(festivalName, searchTerm);
