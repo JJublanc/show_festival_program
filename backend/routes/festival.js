@@ -6,7 +6,7 @@ const auth = require('../middleware/auth');
 const festivalCtrl = require('../controllers/festival');
 router.get('/', festivalCtrl.getAllFestivals);
 router.get('/test', festivalCtrl.test);
-router.post('/', auth, festivalCtrl.createOneFestival);
+router.post('/', festivalCtrl.createOneFestival);
 router.get('/:id', festivalCtrl.getOneFestival);
 router.put('/:id', auth, festivalCtrl.modifyFestival);
 router.delete('/:id', auth, festivalCtrl.deleteFestival);

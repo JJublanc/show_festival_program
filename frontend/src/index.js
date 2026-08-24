@@ -18,20 +18,27 @@ const calendar = new Calendar(calendarEl, {
 });
 
 let festivals_items = [];
+let allShows = [];
+let currentPreviewShowId = null;
+let swiper = null;
+const PREVIEW_COLOR = '#8AB6D6';
+const filtersState = {
+    dateFrom: '',
+    dateTo: '',
+    weekdays: new Set(),
+    timeFrom: '',
+    timeTo: '',
+};
 const backendUrl = process.env.BACKEND_URL
 
-console.log(backendUrl + "/festivals");
 document.addEventListener('DOMContentLoaded', () => {
-    initializeSwiper();
+    setupFiltersUI();
     fetchFestivals().then(() => {
         let festivalName = document.getElementById('festival_selector').value;
         fetchShows(festivalName);
-        console.log(festivals_items);
         let initial_date = festivals_items.filter(item => item.name === festivalName).map(item => item.start)[0];
         calendar.gotoDate(initial_date);
         calendar.render();
-
-
     });
 });
 
@@ -70,8 +77,8 @@ function fetchShows(festivalName, searchTerm) {
 
     return axios.get(url)
         .then(response => {
-            appendSwiperSlides(response.data);
-            loadDescription(response.data[0]._id)
+            allShows = response.data || [];
+            renderFilteredShows();
         })
         .catch(error => {
             console.error('Erreur lors de la requête:', error);
@@ -81,11 +88,33 @@ function fetchShows(festivalName, searchTerm) {
 window.loadDescription = async function(show_id) {
     const div = document.getElementById("show_description");
     try {
-        const show = await get_show_description(show_id); // show should be an object like { title: 'Show Title', description: 'Show Description'}
-        console.log(show);
-        div.innerHTML = `<strong>${show.title}:</strong> ${show.description}`;
+        const show = await get_show_description(show_id);
+        const descHtml = (show.description || '')
+            .replace(/\n\n/g, '<br><br>')
+            .replace(/\n/g, '<br>');
+        div.innerHTML = `<strong>${show.title}:</strong> ${descHtml}`;
+        setActivePreview(show);
     } catch (error) {
         console.error('Erreur lors de la requête:', error);
+    }
+}
+
+function renderFilteredShows() {
+    const filtered = allShows
+        .map(show => ({
+            ...show,
+            sessions: show.sessions.filter(sessionMatchesFilters),
+        }))
+        .filter(show => show.sessions.length > 0);
+
+    appendSwiperSlides(filtered);
+
+    if (filtered.length > 0) {
+        loadDescription(filtered[0]._id);
+    } else {
+        document.getElementById("show_description").innerHTML = '';
+        clearPreviewEvents();
+        currentPreviewShowId = null;
     }
 }
 
@@ -101,7 +130,7 @@ function appendSwiperSlides(data) {
             </label>
         `).join('');
         return `
-            <div class="swiper-slide" id=` + show._id + ` onclick="loadDescription('${show._id}')">
+            <div class="swiper-slide" id=` + show._id + `>
                 <img src="${show.imageURL}">
                 <h3>${show.title}</h3>
                 ${sessionHTML}
@@ -111,10 +140,12 @@ function appendSwiperSlides(data) {
 
     swiperWrapper.innerHTML = slidesHTML;
 
+    initializeSwiper();
+
     data.forEach(show => {
-    const slideElement = document.getElementById(show._id);
-    slideElement.addEventListener('click', () => loadDescription(show._id));
-  });
+        const slideElement = document.getElementById(show._id);
+        slideElement.addEventListener('click', () => loadDescription(show._id));
+    });
 
     data.forEach(show => {
         show.sessions.forEach(session => {
@@ -132,7 +163,10 @@ function appendSwiperSlides(data) {
             } else {
                 event = JSON.parse(stored_event);
                 if (event.checked) {
-                    calendar.addEvent(event);
+                    const existingEvent = calendar.getEventById(eventId);
+                    if (!existingEvent) {
+                        calendar.addEvent(event);
+                    }
                 }
             }
             const checkbox = document.getElementById(eventId);
@@ -146,7 +180,18 @@ function appendSwiperSlides(data) {
 function addEventListenerToCheckbox(checkbox, event) {
     checkbox.addEventListener('change', () => {
         if (checkbox.checked) {
-            calendar.addEvent(event);
+            const existingEvent = calendar.getEventById(event.id);
+            if (existingEvent) {
+                // Etait un preview -> le convertir en selection
+                existingEvent.setExtendedProp('preview', false);
+            } else {
+                calendar.addEvent({
+                    id: event.id,
+                    title: event.title,
+                    start: event.start,
+                    end: event.end,
+                });
+            }
             adjustEventColors(calendar);
             event.checked = true;
         } else {
@@ -154,8 +199,8 @@ function addEventListenerToCheckbox(checkbox, event) {
             if (existingEvent) {
                 existingEvent.remove();
                 adjustEventColors(calendar);
-                event.checked = false;
             }
+            event.checked = false;
         }
         localStorage.setItem(event.id, JSON.stringify(event));
     });
@@ -164,15 +209,21 @@ function addEventListenerToCheckbox(checkbox, event) {
 function adjustEventColors(calendar) {
     const events = calendar.getEvents();
     events.forEach(currentEvent => {
-        currentEvent.setProp('backgroundColor', '');
-        currentEvent.setProp('borderColor', '');
+        if (currentEvent.extendedProps.preview) {
+            currentEvent.setProp('backgroundColor', PREVIEW_COLOR);
+            currentEvent.setProp('borderColor', PREVIEW_COLOR);
+        } else {
+            currentEvent.setProp('backgroundColor', '');
+            currentEvent.setProp('borderColor', '');
+        }
     });
 
-    events.forEach((currentEvent, currentIndex) => {
+    const selected = events.filter(e => !e.extendedProps.preview);
+    selected.forEach((currentEvent, currentIndex) => {
         const currentStart = currentEvent.start;
         const currentEnd = currentEvent.end;
 
-        events.forEach((otherEvent, otherIndex) => {
+        selected.forEach((otherEvent, otherIndex) => {
             if (currentIndex !== otherIndex) {
                 const otherStart = otherEvent.start;
                 const otherEnd = otherEvent.end;
@@ -189,12 +240,51 @@ function adjustEventColors(calendar) {
     });
 }
 
-async function initializeSwiper() {
-    const swiper = new Swiper('.mySwiper', {
+function clearPreviewEvents() {
+    calendar.getEvents().forEach(evt => {
+        if (evt.extendedProps.preview) {
+            evt.remove();
+        }
+    });
+}
+
+function setActivePreview(show) {
+    if (currentPreviewShowId === show._id) return;
+    clearPreviewEvents();
+    currentPreviewShowId = show._id;
+    (show.sessions || []).forEach(session => {
+        const eventId = `${show._id}_${session._id}`;
+        if (calendar.getEventById(eventId)) return; // deja selectionne
+        calendar.addEvent({
+            id: eventId,
+            title: show.title,
+            start: session.start,
+            end: session.end,
+            extendedProps: {preview: true},
+            backgroundColor: PREVIEW_COLOR,
+            borderColor: PREVIEW_COLOR,
+        });
+    });
+    adjustEventColors(calendar);
+}
+
+function initializeSwiper() {
+    if (swiper) {
+        swiper.destroy(true, true);
+        swiper = null;
+    }
+    swiper = new Swiper('.mySwiper', {
         slidesPerView: 5,
         centeredSlides: true,
         spaceBetween: 30,
-        observer: true,
+        slideToClickedSlide: true,
+        watchOverflow: true,
+        roundLengths: true,
+        normalizeSlideIndex: true,
+        keyboard: {
+            enabled: true,
+            onlyInViewport: true,
+        },
         pagination: {
             el: '.swiper-pagination',
             type: 'fraction',
@@ -205,6 +295,14 @@ async function initializeSwiper() {
         },
         preloadImages: false,
         lazy: true,
+        on: {
+            slideChange: (sw) => {
+                const active = sw.slides[sw.activeIndex];
+                if (active && active.id) {
+                    loadDescription(active.id);
+                }
+            },
+        },
     });
 }
 
@@ -220,7 +318,7 @@ function get_show_description(show_id) {
 
 const downloadButton = document.getElementById("download_program_button");
 downloadButton.addEventListener("click", () => {
-    const events = calendar.getEvents();
+    const events = calendar.getEvents().filter(e => !e.extendedProps.preview);
     const icsContent = generateICS(events);
 
     const blob = new Blob([icsContent], {type: "text/calendar"});
@@ -253,4 +351,106 @@ function generateICS(events) {
     icsContent += "END:VCALENDAR\r\n";
 
     return icsContent;
+}
+
+// -------- Filtres date/jour/heure --------
+function setupFiltersUI() {
+    const container = document.getElementById('filters');
+    if (!container) return;
+    const searchContainer = container.querySelector('.search-container');
+    if (searchContainer) {
+        searchContainer.insertAdjacentHTML('beforeend', `
+            <button type="button" id="filter_toggle">Filtres</button>
+        `);
+    }
+
+    document.body.insertAdjacentHTML('beforeend', `
+        <div class="modal-overlay" id="filter_modal" hidden>
+            <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="filter_modal_title">
+                <div class="modal-header">
+                    <h3 id="filter_modal_title">Filtres de séances</h3>
+                    <button type="button" class="modal-close" id="filter_modal_close" aria-label="Fermer">×</button>
+                </div>
+                <div class="filter-row">
+                    <label>Du <input type="date" id="filter_date_from"></label>
+                    <label>Au <input type="date" id="filter_date_to"></label>
+                </div>
+                <div class="filter-row">
+                    <label>De <input type="time" id="filter_time_from"></label>
+                    <label>À <input type="time" id="filter_time_to"></label>
+                </div>
+                <div class="filter-row weekdays">
+                    ${['Lu','Ma','Me','Je','Ve','Sa','Di'].map((lbl, i) => {
+                        const jsDay = i === 6 ? 0 : i + 1;
+                        return `<label class="wd"><input type="checkbox" data-day="${jsDay}"> ${lbl}</label>`;
+                    }).join('')}
+                </div>
+                <div class="filter-row" style="justify-content: flex-end;">
+                    <button type="button" id="filter_reset">Réinitialiser</button>
+                </div>
+            </div>
+        </div>
+    `);
+
+    const modal = document.getElementById('filter_modal');
+    const openBtn = document.getElementById('filter_toggle');
+    const closeBtn = document.getElementById('filter_modal_close');
+    const openModal = () => modal.removeAttribute('hidden');
+    const closeModal = () => modal.setAttribute('hidden', '');
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    document.getElementById('filter_date_from').addEventListener('change', e => { filtersState.dateFrom = e.target.value; renderFilteredShows(); });
+    document.getElementById('filter_date_to').addEventListener('change', e => { filtersState.dateTo = e.target.value; renderFilteredShows(); });
+    document.getElementById('filter_time_from').addEventListener('change', e => { filtersState.timeFrom = e.target.value; renderFilteredShows(); });
+    document.getElementById('filter_time_to').addEventListener('change', e => { filtersState.timeTo = e.target.value; renderFilteredShows(); });
+    container.querySelectorAll('.weekdays input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', () => {
+            const d = Number(cb.dataset.day);
+            if (cb.checked) filtersState.weekdays.add(d); else filtersState.weekdays.delete(d);
+            renderFilteredShows();
+        });
+    });
+    document.getElementById('filter_reset').addEventListener('click', () => {
+        filtersState.dateFrom = '';
+        filtersState.dateTo = '';
+        filtersState.timeFrom = '';
+        filtersState.timeTo = '';
+        filtersState.weekdays.clear();
+        document.getElementById('filter_date_from').value = '';
+        document.getElementById('filter_date_to').value = '';
+        document.getElementById('filter_time_from').value = '';
+        document.getElementById('filter_time_to').value = '';
+        container.querySelectorAll('.weekdays input[type="checkbox"]').forEach(cb => cb.checked = false);
+        renderFilteredShows();
+    });
+}
+
+function sessionMatchesFilters(session) {
+    const start = new Date(session.start);
+    if (isNaN(start.getTime())) return true;
+
+    if (filtersState.dateFrom) {
+        const from = new Date(filtersState.dateFrom + 'T00:00:00');
+        if (start < from) return false;
+    }
+    if (filtersState.dateTo) {
+        const to = new Date(filtersState.dateTo + 'T23:59:59');
+        if (start > to) return false;
+    }
+    if (filtersState.weekdays.size > 0) {
+        if (!filtersState.weekdays.has(start.getDay())) return false;
+    }
+    const startMinutes = start.getHours() * 60 + start.getMinutes();
+    if (filtersState.timeFrom) {
+        const [h, m] = filtersState.timeFrom.split(':').map(Number);
+        if (startMinutes < h * 60 + m) return false;
+    }
+    if (filtersState.timeTo) {
+        const [h, m] = filtersState.timeTo.split(':').map(Number);
+        if (startMinutes > h * 60 + m) return false;
+    }
+    return true;
 }

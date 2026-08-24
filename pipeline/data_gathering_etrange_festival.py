@@ -12,17 +12,21 @@ from bs4 import BeautifulSoup
 
 logging.basicConfig(level=logging.INFO)
 
-API_DB_ROUTE = "http://localhost:3000/api/shows"
+API_DB_ROUTE = "http://localhost:5001/api/shows"
 
 def main(year: int) -> None:
-	for n in range(6, 18):
+	for n in range(2, 14):
 		target_url = (
 			f"https://www.etrangefestival.com/{year}/fr/schedule/09-{str(n).zfill(2)}"
 		)
 		target_div_class = "schedule_grid item-grid"
 
-		urls_in_target_div = get_urls_from_div(target_url, target_div_class)
-		session_urls = [url for url in urls_in_target_div if url != target_url]
+		try:
+			urls_in_target_div = get_urls_from_div(target_url, target_div_class)
+			session_urls = [url for url in urls_in_target_div if url != target_url]
+		except Exception as e:
+			logging.info(f"Pas de programmation pour le 09-{str(n).zfill(2)} : {e}")
+			continue
 
 		for url in session_urls:
 			logging.info(f"Getting info from {url}")
@@ -35,10 +39,16 @@ def main(year: int) -> None:
 				description_extra,
 				director,
 			) = get_info_from_session_url(url)
+			full_description = description
+			if description_extra:
+				full_description = (
+					description + "\n\n" + description_extra
+					if description else description_extra
+				)
 			show = {
 				"festival": f"EtrangeFestival{year}",
 				"title": title,
-				"description": description,
+				"description": full_description,
 				"duration": duration,
 				"imageURL": img_url,
 			}

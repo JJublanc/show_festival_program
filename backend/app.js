@@ -7,20 +7,24 @@ const userRoutes = require('./routes/user');
 require('dotenv').config();
 app.use(express.json());
 const url = require('url');
-const fixieUrl = url.parse(process.env.FIXIE_SOCKS_HOST);
-const fixieAuth = fixieUrl.auth.split(':');
 const useProxy = process.env.USE_PROXY !== 'False';
+let fixieUrl, fixieAuth;
+
+if (useProxy && process.env.FIXIE_SOCKS_HOST) {
+    fixieUrl = url.parse(process.env.FIXIE_SOCKS_HOST);
+    fixieAuth = fixieUrl.auth ? fixieUrl.auth.split(':') : [];
+}
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true
 };
 
-if (useProxy) {
+if (useProxy && fixieUrl) {
     console.log('Utilisation d\'un proxy pour se connecter à MongoDB.');
     options.proxyHost = fixieUrl.hostname;
     options.proxyPort = fixieUrl.port;
     options.proxyUsername = 'fixie';
-    options.proxyPassword = fixieAuth[0];
+    options.proxyPassword = fixieAuth && fixieAuth[0] ? fixieAuth[0] : '';
 
     console.log('Utilisation d\'un proxy pour se connecter à MongoDB.');
 }

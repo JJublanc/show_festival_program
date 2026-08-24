@@ -133,7 +133,12 @@ exports.getAllShows = (req, res, next) => {
 
     // Si un terme de recherche est fourni, l'ajouter aux conditions de la requête
     if (filters.term) {
-        queryConditions.push({$text: {$search: filters.term}});
+        queryConditions.push({
+            $or: [
+                {title: {$regex: filters.term, $options: 'i'}},
+                {description: {$regex: filters.term, $options: 'i'}}
+            ]
+        });
         delete filters.term; // Supprimer le terme de recherche des filtres
     }
 
