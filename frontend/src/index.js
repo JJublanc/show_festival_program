@@ -92,7 +92,10 @@ window.loadDescription = async function(show_id) {
         const descHtml = (show.description || '')
             .replace(/\n\n/g, '<br><br>')
             .replace(/\n/g, '<br>');
-        div.innerHTML = `<strong>${show.title}:</strong> ${descHtml}`;
+        const linkHtml = show.officialUrl
+            ? `<br><br><a href="${show.officialUrl}" target="_blank" rel="noopener noreferrer">Voir la fiche officielle ↗</a>`
+            : '';
+        div.innerHTML = `<strong>${show.title}:</strong> ${descHtml}${linkHtml}`;
         setActivePreview(show);
     } catch (error) {
         console.error('Erreur lors de la requête:', error);
@@ -406,7 +409,7 @@ function setupFiltersUI() {
     document.getElementById('filter_date_to').addEventListener('change', e => { filtersState.dateTo = e.target.value; renderFilteredShows(); });
     document.getElementById('filter_time_from').addEventListener('change', e => { filtersState.timeFrom = e.target.value; renderFilteredShows(); });
     document.getElementById('filter_time_to').addEventListener('change', e => { filtersState.timeTo = e.target.value; renderFilteredShows(); });
-    container.querySelectorAll('.weekdays input[type="checkbox"]').forEach(cb => {
+    modal.querySelectorAll('.weekdays input[type="checkbox"]').forEach(cb => {
         cb.addEventListener('change', () => {
             const d = Number(cb.dataset.day);
             if (cb.checked) filtersState.weekdays.add(d); else filtersState.weekdays.delete(d);
@@ -423,7 +426,7 @@ function setupFiltersUI() {
         document.getElementById('filter_date_to').value = '';
         document.getElementById('filter_time_from').value = '';
         document.getElementById('filter_time_to').value = '';
-        container.querySelectorAll('.weekdays input[type="checkbox"]').forEach(cb => cb.checked = false);
+        modal.querySelectorAll('.weekdays input[type="checkbox"]').forEach(cb => cb.checked = false);
         renderFilteredShows();
     });
 }

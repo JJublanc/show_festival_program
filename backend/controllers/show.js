@@ -16,6 +16,7 @@ exports.createOneShow = (req, res, next) => {
             description: req.body.description,
             duration: req.body.duration,
             imageURL: req.body.imageURL,
+            officialUrl: req.body.officialUrl,
             sessions: req.body.sessions
         });
         return show.save();

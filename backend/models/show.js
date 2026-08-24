@@ -15,6 +15,7 @@ const showSchema = mongoose.Schema({
     duration: {type: String, required: true},
     imageURL: {type: String, required: true},
     director: {type: String, required: false},
+    officialUrl: {type: String, required: false},
     sessions: [sessionSchema],
 });
 

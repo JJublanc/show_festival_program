@@ -51,6 +51,7 @@ def main(year: int) -> None:
 				"description": full_description,
 				"duration": duration,
 				"imageURL": img_url,
+				"officialUrl": url,
 			}
 			sessions = []
 			for date, info in session_practical_info.items():
