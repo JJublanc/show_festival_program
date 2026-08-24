@@ -15,7 +15,22 @@ const calendar = new Calendar(calendarEl, {
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin],
     initialView: 'dayGridMonth',
     aspectRatio: 1.5,
+    eventClick: (info) => {
+        info.jsEvent.preventDefault();
+        const showId = String(info.event.id).split('_')[0];
+        focusShowInSwiper(showId);
+    },
 });
+
+function focusShowInSwiper(showId) {
+    if (!swiper || !swiper.slides) return;
+    const index = Array.from(swiper.slides).findIndex(s => s.id === showId);
+    if (index >= 0) {
+        swiper.slideTo(index);
+    } else {
+        loadDescription(showId);
+    }
+}
 
 let festivals_items = [];
 let allShows = [];
