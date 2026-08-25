@@ -14,6 +14,7 @@ const showSchema = mongoose.Schema({
     description: {type: String, required: true},
     descriptionExtra: {type: String, required: false, default: ''},
     duration: {type: String, required: true},
+    country: {type: String, required: false, default: ''},
     imageURL: {type: String, required: true},
     director: {type: String, required: false},
     officialUrl: {type: String, required: false},

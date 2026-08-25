@@ -40,6 +40,7 @@ def main(year: int) -> None:
 				description,
 				description_extra,
 				director,
+				country,
 			) = get_info_from_session_url(url)
 			show = {
 				"festival": f"EtrangeFestival{year}",
@@ -47,6 +48,7 @@ def main(year: int) -> None:
 				"description": description,
 				"descriptionExtra": description_extra,
 				"duration": duration,
+				"country": country,
 				"imageURL": img_url,
 				"officialUrl": url,
 				"tags": tags_by_url.get(url, []),
@@ -143,7 +145,7 @@ def get_urls_from_div(url: str, div_class: str) -> list:
 
 
 def get_info_from_session_url(url: str) -> Tuple[
-	str, int, dict, str, str, str, str]:
+	str, int, dict, str, str, str, str, str]:
 	response = requests.get(url)
 	response.raise_for_status()
 
@@ -155,6 +157,7 @@ def get_info_from_session_url(url: str) -> Tuple[
 	session_practical_info = get_session_practical_info(soup)
 	description, description_extra = get_descriptions(soup)
 	director = get_director(soup)
+	country = get_country(soup)
 	return (
 		title,
 		duration,
@@ -163,6 +166,7 @@ def get_info_from_session_url(url: str) -> Tuple[
 		description,
 		description_extra,
 		director,
+		country,
 	)
 
 
@@ -240,6 +244,38 @@ def get_descriptions(soup: BeautifulSoup) -> Tuple[str, str]:
 				[description.get_text() for description in descriptions_extra]
 			).strip()
 	return description, description_extra
+
+
+def get_country(soup: BeautifulSoup) -> str:
+	"""Extrait le pays depuis la liste des details du film (annee, pays, genre, duree, ...)."""
+	ignore_patterns = [
+		re.compile(r"^\d{4}$"),                       # annee (ex: 1991)
+		re.compile(r"\d+h\d*mn?", re.IGNORECASE),     # duree (1h49mn, 45mn)
+		re.compile(r"^\d+mn$", re.IGNORECASE),        # duree courte
+		re.compile(r"^VOST", re.IGNORECASE),          # version
+		re.compile(r"^VO$", re.IGNORECASE),
+		re.compile(r"^VF$", re.IGNORECASE),
+		re.compile(r"couleurs?", re.IGNORECASE),      # couleurs
+		re.compile(r"noir\s*(et|&)\s*blanc", re.IGNORECASE),
+		re.compile(r"^N&B$", re.IGNORECASE),
+	]
+
+	def is_country_candidate(text: str) -> bool:
+		if not text:
+			return False
+		if any(p.search(text) for p in ignore_patterns):
+			return False
+		if "/" in text:  # les genres contiennent souvent un slash
+			return False
+		return True
+
+	for ul in soup.find_all("ul", class_="list-unstyled details_movie_basic"):
+		items = [li.get_text(" ", strip=True) for li in ul.find_all("li")]
+		# Premier candidat qui ressemble a un pays (typiquement en 2e position apres l'annee)
+		for text in items:
+			if is_country_candidate(text):
+				return text
+	return ""
 
 
 def get_director(soup: BeautifulSoup) -> str:

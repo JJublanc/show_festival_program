@@ -16,6 +16,7 @@ exports.createOneShow = (req, res, next) => {
             description: req.body.description,
             descriptionExtra: req.body.descriptionExtra,
             duration: req.body.duration,
+            country: req.body.country,
             imageURL: req.body.imageURL,
             officialUrl: req.body.officialUrl,
             tags: req.body.tags,

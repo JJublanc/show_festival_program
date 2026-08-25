@@ -307,11 +307,22 @@ section {
 }
 
 #show_description .tag {
-    background-color: #DD2D4A !important;
     color: #ffffff !important;
     font-weight: 600;
     padding: 3px 10px;
     font-size: 12px;
+}
+
+#show_description .tag-category {
+    background-color: #DD2D4A !important;
+}
+
+#show_description .tag-country {
+    background-color: #1F3B8B !important;
+}
+
+#show_description .tag-duration {
+    background-color: #111111 !important;
 }
 
 #show_description .show-link {

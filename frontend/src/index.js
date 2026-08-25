@@ -22,6 +22,17 @@ const calendar = new Calendar(calendarEl, {
     },
 });
 
+function formatDuration(raw) {
+    if (raw === undefined || raw === null || raw === '') return '';
+    const total = typeof raw === 'number' ? raw : parseInt(raw, 10);
+    if (!Number.isFinite(total) || total <= 0) return '';
+    const h = Math.floor(total / 60);
+    const m = total % 60;
+    if (h && m) return `${h}h${String(m).padStart(2, '0')}`;
+    if (h) return `${h}h`;
+    return `${m}mn`;
+}
+
 function focusShowInSwiper(showId) {
     if (!swiper || !swiper.slides) return;
     const index = Array.from(swiper.slides).findIndex(s => s.id === showId);
@@ -128,9 +139,12 @@ window.loadDescription = async function(show_id) {
     try {
         const show = await get_show_description(show_id);
         const toHtml = (txt) => (txt || '').replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
-        const tagsHtml = (show.tags && show.tags.length)
-            ? `<div class="tag-list">${show.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>`
-            : '';
+        const chips = [];
+        (show.tags || []).forEach(t => chips.push(`<span class="tag tag-category">${t}</span>`));
+        if (show.country) chips.push(`<span class="tag tag-country">${show.country}</span>`);
+        const durLabel = formatDuration(show.duration);
+        if (durLabel) chips.push(`<span class="tag tag-duration">${durLabel}</span>`);
+        const tagsHtml = chips.length ? `<div class="tag-list">${chips.join('')}</div>` : '';
         const linkHtml = show.officialUrl
             ? `<div class="show-link"><a href="${show.officialUrl}" target="_blank" rel="noopener noreferrer">Voir la fiche officielle ↗</a></div>`
             : '';
