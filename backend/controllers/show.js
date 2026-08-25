@@ -14,9 +14,11 @@ exports.createOneShow = (req, res, next) => {
             festival: req.body.festival,
             title: req.body.title,
             description: req.body.description,
+            descriptionExtra: req.body.descriptionExtra,
             duration: req.body.duration,
             imageURL: req.body.imageURL,
             officialUrl: req.body.officialUrl,
+            tags: req.body.tags,
             sessions: req.body.sessions
         });
         return show.save();

@@ -262,11 +262,71 @@ section {
     color: #DD2D4A;
 }
 
-.filter-row.weekdays .wd {
+.filter-row.weekdays .wd,
+.filter-row.tags .wd {
     background-color: #F1EBEC;
     padding: 4px 8px;
     border-radius: 12px;
     cursor: pointer;
+}
+
+.filter-row.tags {
+    flex-wrap: wrap;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+    margin: 6px 0;
+}
+
+.tag {
+    background-color: #DD2D4A;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+#show_description .show-title {
+    margin: 0 0 18px;
+    padding: 0;
+    color: #DD2D4A;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.15;
+    text-align: left;
+}
+
+#show_description .tag-list {
+    justify-content: flex-start;
+    margin: 0 0 18px;
+}
+
+#show_description .tag {
+    background-color: #DD2D4A !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    padding: 3px 10px;
+    font-size: 12px;
+}
+
+#show_description .show-link {
+    margin-bottom: 18px;
+}
+
+#show_description .show-desc {
+    margin-bottom: 18px;
+}
+
+#show_description .show-extra {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid #eee;
+    color: #444;
 }
 
 #filter_reset {

@@ -43,6 +43,7 @@ const filtersState = {
     weekdays: new Set(),
     timeFrom: '',
     timeTo: '',
+    tags: new Set(),
 };
 const backendUrl = process.env.BACKEND_URL
 
@@ -93,6 +94,7 @@ function fetchShows(festivalName, searchTerm) {
     return axios.get(url)
         .then(response => {
             allShows = response.data || [];
+            rebuildTagFilters();
             renderFilteredShows();
         })
         .catch(error => {
@@ -100,17 +102,45 @@ function fetchShows(festivalName, searchTerm) {
         });
 }
 
+function rebuildTagFilters() {
+    const row = document.getElementById('filter_tags_row');
+    if (!row) return;
+    const allTags = new Set();
+    allShows.forEach(s => (s.tags || []).forEach(t => allTags.add(t)));
+    const sorted = Array.from(allTags).sort((a, b) => a.localeCompare(b, 'fr'));
+    filtersState.tags.forEach(t => { if (!allTags.has(t)) filtersState.tags.delete(t); });
+    row.innerHTML = sorted.map(t => {
+        const safe = t.replace(/"/g, '&quot;');
+        const checked = filtersState.tags.has(t) ? 'checked' : '';
+        return `<label class="wd"><input type="checkbox" data-tag="${safe}" ${checked}> ${t}</label>`;
+    }).join('');
+    row.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', () => {
+            const t = cb.dataset.tag;
+            if (cb.checked) filtersState.tags.add(t); else filtersState.tags.delete(t);
+            renderFilteredShows();
+        });
+    });
+}
+
 window.loadDescription = async function(show_id) {
     const div = document.getElementById("show_description");
     try {
         const show = await get_show_description(show_id);
-        const descHtml = (show.description || '')
-            .replace(/\n\n/g, '<br><br>')
-            .replace(/\n/g, '<br>');
-        const linkHtml = show.officialUrl
-            ? `<br><br><a href="${show.officialUrl}" target="_blank" rel="noopener noreferrer">Voir la fiche officielle ↗</a>`
+        const toHtml = (txt) => (txt || '').replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
+        const tagsHtml = (show.tags && show.tags.length)
+            ? `<div class="tag-list">${show.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>`
             : '';
-        div.innerHTML = `<strong>${show.title}:</strong> ${descHtml}${linkHtml}`;
+        const linkHtml = show.officialUrl
+            ? `<div class="show-link"><a href="${show.officialUrl}" target="_blank" rel="noopener noreferrer">Voir la fiche officielle ↗</a></div>`
+            : '';
+        const descHtml = show.description
+            ? `<div class="show-desc">${toHtml(show.description)}</div>`
+            : '';
+        const extraHtml = show.descriptionExtra
+            ? `<div class="show-extra"><em>Commentaire de la programmation :</em><br>${toHtml(show.descriptionExtra)}</div>`
+            : '';
+        div.innerHTML = `<h2 class="show-title">${show.title}</h2>${tagsHtml}${linkHtml}${descHtml}${extraHtml}`;
         setActivePreview(show);
     } catch (error) {
         console.error('Erreur lors de la requête:', error);
@@ -119,6 +149,7 @@ window.loadDescription = async function(show_id) {
 
 function renderFilteredShows() {
     const filtered = allShows
+        .filter(showMatchesTagFilter)
         .map(show => ({
             ...show,
             sessions: show.sessions.filter(sessionMatchesFilters),
@@ -406,6 +437,7 @@ function setupFiltersUI() {
                         return `<label class="wd"><input type="checkbox" data-day="${jsDay}"> ${lbl}</label>`;
                     }).join('')}
                 </div>
+                <div class="filter-row tags" id="filter_tags_row"></div>
                 <div class="filter-row" style="justify-content: flex-end;">
                     <button type="button" id="filter_reset">Réinitialiser</button>
                 </div>
@@ -445,13 +477,21 @@ function setupFiltersUI() {
         filtersState.timeFrom = '';
         filtersState.timeTo = '';
         filtersState.weekdays.clear();
+        filtersState.tags.clear();
         document.getElementById('filter_date_from').value = '';
         document.getElementById('filter_date_to').value = '';
         document.getElementById('filter_time_from').value = '';
         document.getElementById('filter_time_to').value = '';
         modal.querySelectorAll('.weekdays input[type="checkbox"]').forEach(cb => cb.checked = false);
+        modal.querySelectorAll('.tags input[type="checkbox"]').forEach(cb => cb.checked = false);
         renderFilteredShows();
     });
+}
+
+function showMatchesTagFilter(show) {
+    if (filtersState.tags.size === 0) return true;
+    const showTags = show.tags || [];
+    return showTags.some(t => filtersState.tags.has(t));
 }
 
 function sessionMatchesFilters(session) {

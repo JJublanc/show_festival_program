@@ -15,6 +15,8 @@ logging.basicConfig(level=logging.INFO)
 API_DB_ROUTE = "http://localhost:5001/api/shows"
 
 def main(year: int) -> None:
+	tags_by_url = build_tags_by_url(year)
+	logging.info(f"Tags map built for {len(tags_by_url)} films")
 	for n in range(2, 14):
 		target_url = (
 			f"https://www.etrangefestival.com/{year}/fr/schedule/09-{str(n).zfill(2)}"
@@ -39,19 +41,15 @@ def main(year: int) -> None:
 				description_extra,
 				director,
 			) = get_info_from_session_url(url)
-			full_description = description
-			if description_extra:
-				full_description = (
-					description + "\n\n" + description_extra
-					if description else description_extra
-				)
 			show = {
 				"festival": f"EtrangeFestival{year}",
 				"title": title,
-				"description": full_description,
+				"description": description,
+				"descriptionExtra": description_extra,
 				"duration": duration,
 				"imageURL": img_url,
 				"officialUrl": url,
+				"tags": tags_by_url.get(url, []),
 			}
 			sessions = []
 			for date, info in session_practical_info.items():
@@ -65,6 +63,47 @@ def main(year: int) -> None:
 			show["sessions"] = sessions
 			res = requests.post(API_DB_ROUTE, json=show)
 			logging.info(res.status_code)
+
+
+def build_tags_by_url(year: int) -> dict:
+	"""Parcourt /program et chaque sous-programme pour associer les films aux sous-programmes."""
+	program_url = f"https://www.etrangefestival.com/{year}/fr/program"
+	tags_by_url: dict = {}
+	try:
+		resp = requests.get(program_url)
+		resp.raise_for_status()
+	except Exception as e:
+		logging.warning(f"Impossible de charger la page /program : {e}")
+		return tags_by_url
+
+	soup = BeautifulSoup(resp.content, "html.parser")
+	subprogram_urls: list = []
+	for h3 in soup.find_all("h3"):
+		grid = h3.find_next_sibling("div", class_="item-grid")
+		if not grid:
+			continue
+		for a in grid.find_all("a", href=True):
+			subprogram_urls.append(get_absolute_url(program_url, a["href"]))
+
+	for sp_url in subprogram_urls:
+		try:
+			sp_resp = requests.get(sp_url)
+			sp_resp.raise_for_status()
+		except Exception as e:
+			logging.warning(f"Sous-programme illisible ({sp_url}) : {e}")
+			continue
+		sp_soup = BeautifulSoup(sp_resp.content, "html.parser")
+		title_el = sp_soup.find("h2")
+		sp_name = title_el.get_text(strip=True) if title_el else sp_url.rsplit("/", 1)[-1]
+		for a in sp_soup.find_all("a", href=True):
+			href = a["href"]
+			if "/movie/" not in href and "/show/" not in href:
+				continue
+			film_url = get_absolute_url(sp_url, href)
+			tags_by_url.setdefault(film_url, [])
+			if sp_name not in tags_by_url[film_url]:
+				tags_by_url[film_url].append(sp_name)
+	return tags_by_url
 
 
 def get_args() -> argparse.Namespace:
