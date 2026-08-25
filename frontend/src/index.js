@@ -127,12 +127,15 @@ function renderFilteredShows() {
 
     appendSwiperSlides(filtered);
 
-    if (filtered.length > 0) {
-        loadDescription(filtered[0]._id);
-    } else {
+    if (filtered.length === 0) {
         document.getElementById("show_description").innerHTML = '';
         clearPreviewEvents();
         currentPreviewShowId = null;
+        return;
+    }
+    const stillVisible = currentPreviewShowId && filtered.some(s => s._id === currentPreviewShowId);
+    if (!stillVisible) {
+        loadDescription(filtered[0]._id);
     }
 }
 
@@ -191,8 +194,8 @@ function appendSwiperSlides(data) {
             checkbox.checked = event.checked;
             addEventListenerToCheckbox(checkbox, event);
         });
-        adjustEventColors(calendar)
     });
+    adjustEventColors(calendar);
 }
 
 function addEventListenerToCheckbox(checkbox, event) {
@@ -420,10 +423,15 @@ function setupFiltersUI() {
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-    document.getElementById('filter_date_from').addEventListener('change', e => { filtersState.dateFrom = e.target.value; renderFilteredShows(); });
-    document.getElementById('filter_date_to').addEventListener('change', e => { filtersState.dateTo = e.target.value; renderFilteredShows(); });
-    document.getElementById('filter_time_from').addEventListener('change', e => { filtersState.timeFrom = e.target.value; renderFilteredShows(); });
-    document.getElementById('filter_time_to').addEventListener('change', e => { filtersState.timeTo = e.target.value; renderFilteredShows(); });
+    let renderTimer = null;
+    const scheduleRender = () => {
+        if (renderTimer) clearTimeout(renderTimer);
+        renderTimer = setTimeout(() => { renderTimer = null; renderFilteredShows(); }, 150);
+    };
+    document.getElementById('filter_date_from').addEventListener('input', e => { filtersState.dateFrom = e.target.value; scheduleRender(); });
+    document.getElementById('filter_date_to').addEventListener('input', e => { filtersState.dateTo = e.target.value; scheduleRender(); });
+    document.getElementById('filter_time_from').addEventListener('input', e => { filtersState.timeFrom = e.target.value; scheduleRender(); });
+    document.getElementById('filter_time_to').addEventListener('input', e => { filtersState.timeTo = e.target.value; scheduleRender(); });
     modal.querySelectorAll('.weekdays input[type="checkbox"]').forEach(cb => {
         cb.addEventListener('change', () => {
             const d = Number(cb.dataset.day);
