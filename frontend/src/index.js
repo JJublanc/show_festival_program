@@ -1,13 +1,13 @@
-import axios from 'axios';
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
-
-import * as process from "process";
+import './style/style.css';
 
 import {Calendar} from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import listPlugin from '@fullcalendar/list'
+import listPlugin from '@fullcalendar/list';
+
+import festivalsData from './data/festivals.json';
 
 
 const calendarEl = document.getElementById('calendar');
@@ -55,29 +55,24 @@ const filtersState = {
     timeFrom: '',
     timeTo: '',
     tags: new Set(),
+    searchTerm: '',
 };
-const backendUrl = process.env.BACKEND_URL
 
 document.addEventListener('DOMContentLoaded', () => {
     setupFiltersUI();
-    fetchFestivals().then(() => {
-        let festivalName = document.getElementById('festival_selector').value;
-        fetchShows(festivalName);
-        let initial_date = festivals_items.filter(item => item.name === festivalName).map(item => item.start)[0];
-        calendar.gotoDate(initial_date);
-        calendar.render();
-    });
+    loadFestivals();
+    const festivalName = document.getElementById('festival_selector').value;
+    if (festivalName) {
+        loadShowsForFestival(festivalName);
+        const initialDate = festivals_items.find(item => item.name === festivalName)?.start;
+        if (initialDate) calendar.gotoDate(initialDate);
+    }
+    calendar.render();
 });
 
-function fetchFestivals() {
-    return axios.get(backendUrl + '/festivals')
-        .then(response => {
-            festivals_items = response.data;
-            appendFestivalList(response.data);
-        })
-        .catch(error => {
-            console.error('Erreur lors de la requête:', error);
-        });
+function loadFestivals() {
+    festivals_items = (festivalsData || []).slice();
+    appendFestivalList(festivals_items);
 }
 
 function appendFestivalList(data) {
@@ -90,26 +85,28 @@ function appendFestivalList(data) {
     }).join('');
     select.innerHTML = lisHTML;
     select.addEventListener('change', () => {
-        fetchShows(select.value);
-        let initial_date = festivals_items.filter(item => item.name === select.value).map(item => item.start)[0];
-        calendar.gotoDate(initial_date);
+        loadShowsForFestival(select.value);
+        const initialDate = festivals_items.find(item => item.name === select.value)?.start;
+        if (initialDate) calendar.gotoDate(initialDate);
     });
 }
 
-function fetchShows(festivalName, searchTerm) {
-    let url = backendUrl + '/shows?festival=' + festivalName;
-    if (searchTerm && searchTerm.trim() !== '') {
-        url += '&term=' + encodeURIComponent(searchTerm);
-    }
-
-    return axios.get(url)
-        .then(response => {
-            allShows = response.data || [];
+function loadShowsForFestival(festivalName) {
+    return import(
+        /* webpackChunkName: "festival-data-[request]" */
+        /* webpackMode: "lazy" */
+        `./data/${festivalName}.json`
+    )
+        .then(module => {
+            allShows = module.default || [];
             rebuildTagFilters();
             renderFilteredShows();
         })
         .catch(error => {
-            console.error('Erreur lors de la requête:', error);
+            console.error(`Aucune donnée pour ${festivalName}:`, error);
+            allShows = [];
+            rebuildTagFilters();
+            renderFilteredShows();
         });
 }
 
@@ -164,6 +161,7 @@ window.loadDescription = async function(show_id) {
 function renderFilteredShows() {
     const filtered = allShows
         .filter(showMatchesTagFilter)
+        .filter(showMatchesSearchTerm)
         .map(show => ({
             ...show,
             sessions: show.sessions.filter(sessionMatchesFilters),
@@ -373,13 +371,7 @@ function initializeSwiper() {
 }
 
 function get_show_description(show_id) {
-    return axios.get(backendUrl + '/shows/' + show_id)
-        .then(response => {
-            return response.data;
-        })
-        .catch(error => {
-            console.error('Erreur lors de la requête:', error);
-        });
+    return Promise.resolve(allShows.find(s => s._id === show_id) || null);
 }
 
 const downloadButton = document.getElementById("download_program_button");
@@ -400,9 +392,8 @@ downloadButton.addEventListener("click", () => {
 });
 
 document.getElementById('searchInput').addEventListener('input', function () {
-    const searchTerm = this.value;
-    let festivalName = document.getElementById('festival_selector').value;
-    fetchShows(festivalName, searchTerm);
+    filtersState.searchTerm = this.value || '';
+    renderFilteredShows();
 });
 
 function generateICS(events) {
@@ -506,6 +497,14 @@ function showMatchesTagFilter(show) {
     if (filtersState.tags.size === 0) return true;
     const showTags = show.tags || [];
     return showTags.some(t => filtersState.tags.has(t));
+}
+
+function showMatchesSearchTerm(show) {
+    const term = (filtersState.searchTerm || '').trim().toLowerCase();
+    if (!term) return true;
+    return (show.title || '').toLowerCase().includes(term)
+        || (show.description || '').toLowerCase().includes(term)
+        || (show.descriptionExtra || '').toLowerCase().includes(term);
 }
 
 function sessionMatchesFilters(session) {

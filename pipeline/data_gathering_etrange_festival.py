@@ -1,8 +1,11 @@
 import argparse
+import json
 import logging
 import os
 import re
+import uuid
 from datetime import datetime
+from pathlib import Path
 from typing import Tuple
 from urllib.parse import urljoin
 
@@ -13,10 +16,14 @@ from bs4 import BeautifulSoup
 logging.basicConfig(level=logging.INFO)
 
 API_DB_ROUTE = "http://localhost:5001/api/shows"
+DEFAULT_EXPORT_DIR = Path(__file__).resolve().parents[1] / "frontend" / "src" / "data"
 
-def main(year: int) -> None:
+def main(year: int, export_json_dir: Path = None, post_api: bool = True) -> None:
 	tags_by_url = build_tags_by_url(year)
 	logging.info(f"Tags map built for {len(tags_by_url)} films")
+	shows_by_url: dict = {}
+	festival_name = f"EtrangeFestival{year}"
+
 	for n in range(2, 14):
 		target_url = (
 			f"https://www.etrangefestival.com/{year}/fr/schedule/09-{str(n).zfill(2)}"
@@ -25,25 +32,32 @@ def main(year: int) -> None:
 
 		try:
 			urls_in_target_div = get_urls_from_div(target_url, target_div_class)
-			session_urls = [url for url in urls_in_target_div if url != target_url]
+			session_urls = [
+				url for url in urls_in_target_div
+				if url != target_url and "etrangefestival.com" in url
+			]
 		except Exception as e:
 			logging.info(f"Pas de programmation pour le 09-{str(n).zfill(2)} : {e}")
 			continue
 
 		for url in session_urls:
 			logging.info(f"Getting info from {url}")
-			(
-				title,
-				duration,
-				session_practical_info,
-				img_url,
-				description,
-				description_extra,
-				director,
-				country,
-			) = get_info_from_session_url(url)
+			try:
+				(
+					title,
+					duration,
+					session_practical_info,
+					img_url,
+					description,
+					description_extra,
+					director,
+					country,
+				) = get_info_from_session_url(url)
+			except Exception as e:
+				logging.warning(f"Extraction impossible pour {url} : {e}")
+				continue
 			show = {
-				"festival": f"EtrangeFestival{year}",
+				"festival": festival_name,
 				"title": title,
 				"description": description,
 				"descriptionExtra": description_extra,
@@ -57,14 +71,59 @@ def main(year: int) -> None:
 			for date, info in session_practical_info.items():
 				startdate, enddate = get_start_end_date(date, year, info["time"],
 				                                        duration)
-				sessions.append({"date": date,
+				sessions.append({"_id": stable_id(url, date, info["time"]),
+				                 "date": date,
 				                 "location": info["location"],
 				                 "start": startdate,
 				                 "end": enddate,
 				                 "time": info["time"]})
 			show["sessions"] = sessions
-			res = requests.post(API_DB_ROUTE, json=show)
-			logging.info(res.status_code)
+
+			if post_api:
+				try:
+					res = requests.post(API_DB_ROUTE, json=show)
+					logging.info(res.status_code)
+				except Exception as e:
+					logging.warning(f"POST API échoué : {e}")
+
+			if export_json_dir is not None and url not in shows_by_url:
+				exported = dict(show)
+				exported["_id"] = stable_id(url)
+				shows_by_url[url] = exported
+
+	if export_json_dir is not None:
+		export_json_dir.mkdir(parents=True, exist_ok=True)
+		shows_path = export_json_dir / f"{festival_name}.json"
+		shows_for_export = list(shows_by_url.values())
+		shows_path.write_text(
+			json.dumps(shows_for_export, ensure_ascii=False, indent=2),
+			encoding="utf-8",
+		)
+		logging.info(f"Exported {len(shows_for_export)} shows to {shows_path}")
+
+		festivals_path = export_json_dir / "festivals.json"
+		if festivals_path.exists():
+			festivals = json.loads(festivals_path.read_text(encoding="utf-8"))
+		else:
+			festivals = []
+		festivals = [f for f in festivals if f.get("name") != festival_name]
+		festivals.append({
+			"name": festival_name,
+			"start": f"{year}-09-01T22:00:00.000Z",
+			"end": f"{year}-09-17T21:59:59.000Z",
+		})
+		festivals.sort(key=lambda f: f.get("start", ""), reverse=True)
+		festivals_path.write_text(
+			json.dumps(festivals, ensure_ascii=False, indent=2),
+			encoding="utf-8",
+		)
+		logging.info(f"Updated festivals index at {festivals_path}")
+
+
+def stable_id(*parts: str) -> str:
+	"""Genere un identifiant stable base sur les composantes (URL, date, heure)."""
+	seed = "|".join(parts)
+	return uuid.uuid5(uuid.NAMESPACE_URL, seed).hex
 
 
 def build_tags_by_url(year: int) -> dict:
@@ -118,6 +177,21 @@ def get_args() -> argparse.Namespace:
 		type=str,
 		default="2022",
 		help="Year of the festival",
+	)
+	parser.add_argument(
+		"--export-json",
+		nargs="?",
+		const=str(DEFAULT_EXPORT_DIR),
+		default=None,
+		help=(
+			"Écrit les shows au format JSON dans le dossier indiqué "
+			f"(par défaut : {DEFAULT_EXPORT_DIR}). Utile pour un déploiement statique."
+		),
+	)
+	parser.add_argument(
+		"--no-api",
+		action="store_true",
+		help="Ne pas POSTer sur l'API locale (utile en mode export JSON seul).",
 	)
 	return parser.parse_args()
 
@@ -193,11 +267,13 @@ def get_duration(soup: BeautifulSoup) -> int:
 
 def get_absolute_image_url(soup: BeautifulSoup, url: str) -> str:
 	absolute_image_url = ""
-	img_element = soup.find("div", class_="details_main_picture").find("img")
+	container = soup.find("div", class_="details_main_picture")
+	if not container:
+		return absolute_image_url
+	img_element = container.find("img")
 	if img_element:
 		image_url = img_element.get("src")
 		if image_url:
-			# Convert the relative URL to absolute URL
 			absolute_image_url = get_absolute_url(url, image_url)
 	return absolute_image_url
 
@@ -371,4 +447,6 @@ def get_start_end_date(date: str,
 # Example usage
 if __name__ == "__main__":
 	args = get_args()
-	main(args.year)
+	export_dir = Path(args.export_json) if args.export_json else None
+	post_api = not args.no_api
+	main(args.year, export_json_dir=export_dir, post_api=post_api)
