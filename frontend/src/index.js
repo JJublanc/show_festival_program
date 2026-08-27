@@ -338,13 +338,18 @@ function initializeSwiper() {
         swiper = null;
     }
     swiper = new Swiper('.mySwiper', {
-        slidesPerView: 5,
+        slidesPerView: 1,
         centeredSlides: true,
-        spaceBetween: 30,
+        spaceBetween: 16,
         slideToClickedSlide: true,
         watchOverflow: true,
         roundLengths: true,
         normalizeSlideIndex: true,
+        breakpoints: {
+            480: { slidesPerView: 2, spaceBetween: 18 },
+            768: { slidesPerView: 3, spaceBetween: 22 },
+            1024: { slidesPerView: 5, spaceBetween: 30 },
+        },
         keyboard: {
             enabled: true,
             onlyInViewport: true,
