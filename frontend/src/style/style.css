@@ -325,6 +325,77 @@ section {
     background-color: #111111 !important;
 }
 
+footer {
+    padding: 30px 5% 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+}
+
+.footer-support {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    max-width: 520px;
+    text-align: center;
+}
+
+.footer-support p {
+    margin: 0;
+    padding: 0;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.coffee-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #FFDD00;
+    color: #111;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 10px 22px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.coffee-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.coffee-icon {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.footer-contact {
+    color: #777;
+    font-size: 13px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-contact a {
+    color: #777;
+    text-decoration: none;
+}
+
+.footer-contact a:hover {
+    text-decoration: underline;
+}
+
 #show_description .show-link {
     margin-bottom: 18px;
 }
