@@ -401,13 +401,32 @@ document.getElementById('searchInput').addEventListener('input', function () {
     renderFilteredShows();
 });
 
+function formatICSDate(date) {
+    return date.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+}
+
+function escapeICSText(text) {
+    return String(text)
+        .replace(/\\/g, "\\\\")
+        .replace(/;/g, "\\;")
+        .replace(/,/g, "\\,")
+        .replace(/\r?\n/g, "\\n");
+}
+
 function generateICS(events) {
     let icsContent = "BEGIN:VCALENDAR\r\n";
-    events.forEach(event => {
+    icsContent += "VERSION:2.0\r\n";
+    icsContent += "PRODID:-//show-festival-program//FR\r\n";
+    icsContent += "CALSCALE:GREGORIAN\r\n";
+    const dtstamp = formatICSDate(new Date());
+    events.forEach((event, index) => {
+        const uid = `${formatICSDate(event.start)}-${index}@show-festival-program`;
         icsContent += "BEGIN:VEVENT\r\n";
-        icsContent += `SUMMARY:${event.title}\r\n`;
-        icsContent += `DTSTART:${event.start.toISOString().replace(/[-:]/g, "")}\r\n`;
-        icsContent += `DTEND:${event.end.toISOString().replace(/[-:]/g, "")}\r\n`;
+        icsContent += `UID:${uid}\r\n`;
+        icsContent += `DTSTAMP:${dtstamp}\r\n`;
+        icsContent += `SUMMARY:${escapeICSText(event.title)}\r\n`;
+        icsContent += `DTSTART:${formatICSDate(event.start)}\r\n`;
+        icsContent += `DTEND:${formatICSDate(event.end)}\r\n`;
         icsContent += "END:VEVENT\r\n";
     });
     icsContent += "END:VCALENDAR\r\n";
